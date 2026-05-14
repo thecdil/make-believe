@@ -1,0 +1,519 @@
+<script>
+/* ============================================================================
+   InterVis — Interstitial Visualization Handler
+   Set INTERVIS_DEBUG = true to log parse/segment/transform state to the
+   browser console, which is the fastest way to diagnose coordinate issues.
+   ============================================================================ */
+
+const INTERVIS_DEBUG = true;   // ← set false in production
+
+class InterVis {
+
+  constructor(triggerBlock, layerContainer, frame, stickyTitle, hintEl, descriptionEl) {
+    this.triggerBlock   = triggerBlock;
+    this.layerContainer = layerContainer;
+    this.frame          = frame;
+    this.stickyTitle    = stickyTitle;
+    this.hintEl         = hintEl        || null;
+    this.descriptionEl  = descriptionEl || null;
+
+    this.triggers           = [];
+    this.segments           = [];
+    this.layerEls           = new Map();
+    this._lastOpacity       = new Map();
+    this._hintDismissed     = false;
+    this._activeDescription = '';
+    this._debugLogged       = false;
+
+    this._basePath = window.intervisBasePath || '/objects/inter_vis/';
+
+    // ── ACCESSIBILITY: overall alt text for the full visualization section ──
+    // Read from data-intervis-alt on the trigger block element (set via
+    // `alt_text:` front matter in the inter_vis markdown file).
+    // Applied as role="img" + aria-labelledby on the frame, with a
+    // visually-hidden <span class="intervis-alt-text"> carrying the text.
+    // This gives screen-reader users a single meaningful sentence describing
+    // the entire visualization rather than per-layer "image" announcements.
+    this._applyAltText();
+    this._parse();
+    this._buildSegments();
+    this._sizeTriggerBlock();
+    this._setupVisibilityObserver();
+  }
+
+  // ── ALT TEXT ───────────────────────────────────────────────────────────────
+  // Reads `alt_text:` front matter from data-intervis-alt on the trigger block.
+  // Creates a visually-hidden <span class="intervis-alt-text"> inside the frame
+  // and wires up role="img" + aria-labelledby so screen readers announce the
+  // full visualization description rather than individual layer images.
+  // Safe to call multiple times — idempotent (skips if span already exists).
+  _applyAltText() {
+    const altText = this.triggerBlock?.dataset?.intervisAlt || '';
+    if (!altText || !this.frame) return;
+
+    // Idempotent: don't create a second span if already applied
+    if (this.frame.querySelector('.intervis-alt-text')) return;
+
+    const id   = `intervis-alt-${Math.random().toString(36).slice(2, 8)}`;
+    const span = document.createElement('span');
+    span.className   = 'intervis-alt-text';
+    span.id          = id;
+    span.textContent = altText;
+
+    this.frame.appendChild(span);
+    this.frame.setAttribute('role',             'img');
+    this.frame.setAttribute('aria-labelledby',  id);
+
+    if (INTERVIS_DEBUG) {
+      console.log(`[InterVis] Alt text applied: "${altText}"`);
+    }
+  }
+
+  // ── PARSE ──────────────────────────────────────────────────────────────────
+  _parse() {
+    const markers = this.triggerBlock.querySelectorAll('[data-trigger-type]');
+
+    if (INTERVIS_DEBUG) {
+      console.log(`[InterVis] Block: ${this.triggerBlock.dataset.chapterPath || '?'}`);
+      console.log(`[InterVis] Found ${markers.length} trigger marker(s)`);
+      if (markers.length === 0) {
+        console.warn('[InterVis] ⚠ No markers found. Check that trigger_tag.rb is correctly emitting <span data-trigger-type="..."> elements and that Jekyll was restarted after the plugin was updated.');
+      }
+    }
+
+    markers.forEach((marker, idx) => {
+      const rawId  = marker.dataset.triggerId     || '';
+      const action = marker.dataset.triggerAction || 'start';
+
+      const rawOp   = marker.dataset.triggerOpacity;
+      const opacity = (rawOp !== undefined && rawOp !== '')
+        ? Math.min(1, Math.max(0, parseFloat(rawOp) / 100))
+        : 1;
+
+      // zoom omitted or empty → default 10 (scale 1×, translate mode)
+      const rawZoom = marker.dataset.triggerZoom;
+      const zoom    = (rawZoom !== undefined && rawZoom !== '')
+        ? parseFloat(rawZoom)
+        : 10;
+
+      const coords      = marker.dataset.triggerCoordinates  || null;
+      const description = marker.dataset.triggerDescription  || '';
+
+      if (INTERVIS_DEBUG) {
+        console.log(`[InterVis]   [${idx}] id="${rawId}" action="${action}" coords="${coords}" zoom=${zoom} desc="${description}"`);
+        if (coords === null) {
+          console.warn(`[InterVis]   [${idx}] ⚠ coords is null — data-trigger-coordinates attribute is missing from the span. Check trigger_tag.rb output.`);
+        }
+        if (!description && marker.dataset.triggerDescription === undefined) {
+          // Only warn if description was expected (we can't tell from here, skip)
+        }
+      }
+
+      // Comma-separated ids
+      const ids = rawId.split(',').map(s => s.trim()).filter(Boolean);
+      if (ids.length === 0) ids.push('');
+
+      ids.forEach(id => {
+        this.triggers.push({ marker, id, action, opacity, zoom, coords, description });
+      });
+    });
+
+    if (INTERVIS_DEBUG) {
+      console.log(`[InterVis] Parsed ${this.triggers.length} trigger entries`);
+    }
+  }
+
+  // ── BUILD SEGMENTS ─────────────────────────────────────────────────────────
+  _buildSegments() {
+    const byId = new Map();
+    this.triggers.forEach(t => {
+      if (t.id === 'all' || t.id === '') return;
+      if (!byId.has(t.id)) byId.set(t.id, []);
+      byId.get(t.id).push(t);
+    });
+
+    byId.forEach((list, id) => {
+      for (let i = 0; i < list.length - 1; i++) {
+        this.segments.push({ id, from: list[i], to: list[i + 1] });
+      }
+    });
+
+    if (INTERVIS_DEBUG) {
+      console.log(`[InterVis] Built ${this.segments.length} segment(s):`);
+      this.segments.forEach((seg, i) => {
+        console.log(`[InterVis]   seg[${i}] ${seg.id}: ${seg.from.coords} → ${seg.to.coords}`);
+      });
+      if (this.segments.length === 0) {
+        console.warn('[InterVis] ⚠ No segments. Each layer needs at least two start-triggers to animate. A single start+end pair produces no movement segment.');
+      }
+    }
+  }
+
+  // ── SIZE TRIGGER BLOCK ─────────────────────────────────────────────────────
+  _sizeTriggerBlock() {
+    if (!this.triggers.length) return;
+
+    const isMobile    = window.innerWidth <= 992;
+    const paddingTop  = window.scrollY < window.innerHeight ? '40vh' : '15vh';
+
+    // On mobile, 50vh padding-bottom means the fixed frame (position:fixed,
+    // z-index:200) stays covering the viewport for ~150vh of scrolling after
+    // the last trigger (50vh padding + full viewport height before block exits).
+    // 10vh is enough breathing room while letting the IntersectionObserver
+    // fire much sooner so fixed-frame cleanup happens in a reasonable time.
+    // The CSS .intervis-frame.is-active.is-cleared rule handles the visual
+    // transition independently of when the observer fires.
+    const paddingBottom = isMobile ? '10vh' : '50vh';
+
+    this.triggerBlock.style.setProperty('padding-top',    paddingTop,    'important');
+    this.triggerBlock.style.setProperty('padding-bottom', paddingBottom, 'important');
+
+    if (INTERVIS_DEBUG) {
+      console.log(`[InterVis] padding-top: ${paddingTop}, padding-bottom: ${paddingBottom}`);
+    }
+  }
+
+  // ── VISIBILITY OBSERVER ────────────────────────────────────────────────────
+  _setupVisibilityObserver() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const active = entry.isIntersecting;
+        this.frame?.classList.toggle('is-active', active);
+
+        // Drive hint and title visibility directly via JS classes —
+        // NOT via CSS .intervis-frame.is-active selectors. This is critical
+        // because hint and title are position:fixed on body (or inside a
+        // mobile fixed frame) and must not depend on the frame's opacity.
+        if (active) {
+          this.stickyTitle?.classList.add('intervis-title-active');
+          // Hint shows on entry; dismissed after first trigger (Phase 3)
+          if (!this._hintDismissed) {
+            this.hintEl?.classList.add('intervis-hint-active');
+          }
+        } else {
+          this._clearAllLayers();
+          this._hintDismissed     = false;
+          this._activeDescription = '';
+          this._wasCleared        = false;
+
+          // Reset any inline styles set by Phase 5 so CSS class rules take over
+          [this.stickyTitle, this.hintEl, this.descriptionEl].forEach(el => {
+            if (!el) return;
+            el.style.transition = '';
+            el.style.opacity    = '';
+          });
+
+          this.hintEl?.classList.remove('is-dismissed', 'intervis-hint-active', 'is-cleared');
+          this.stickyTitle?.classList.remove('intervis-title-active', 'is-cleared');
+          this.frame?.classList.remove('is-cleared');
+          this._updateDescription('');
+          this._debugLogged = false;
+        }
+      });
+    }, { threshold: 0 });
+
+    obs.observe(this.triggerBlock);
+    this._visibilityObserver = obs;
+  }
+
+  // ── HANDLE SCROLL ──────────────────────────────────────────────────────────
+  handleScroll(viewportCenter) {
+
+    // Phase 1: Opacity
+    const desired = new Map();
+
+    for (const t of this.triggers) {
+      const rect   = t.marker.getBoundingClientRect();
+      const passed = rect.top + rect.height / 2 < viewportCenter;
+      if (!passed) continue;
+
+      if (t.action === 'start' && t.id !== 'all') {
+        desired.set(t.id, t.opacity);
+      } else if (t.action === 'end') {
+        if (t.id === 'all') desired.clear();
+        else desired.delete(t.id);
+      }
+    }
+
+    desired.forEach((targetOpacity, id) => {
+      if (this._lastOpacity.get(id) === targetOpacity) return;
+      const img = this._getOrCreateLayer(id);
+      if (img) img.style.opacity = String(targetOpacity);
+    });
+
+    this._lastOpacity.forEach((_, id) => {
+      if (!desired.has(id)) {
+        const img = this.layerEls.get(id);
+        if (img && parseFloat(img.style.opacity) !== 0) img.style.opacity = '0';
+      }
+    });
+
+    this._lastOpacity = new Map(desired);
+
+    // Phase 2: Transforms
+    this._updateTransforms(viewportCenter);
+
+    // Phase 3: Hint — dismiss once any layer is visible
+    if (desired.size > 0 && !this._hintDismissed) {
+      this._hintDismissed = true;
+      this.hintEl?.classList.add('is-dismissed');
+      this.hintEl?.classList.remove('intervis-hint-active');
+    }
+
+    // Phase 4: Description
+    let newDesc = '';
+    for (const t of this.triggers) {
+      const rect = t.marker.getBoundingClientRect();
+      if (rect.top + rect.height / 2 >= viewportCenter) continue;
+      if (t.action === 'start' && t.description) {
+        newDesc = t.description;
+      } else if (t.action === 'end' && t.description) {
+        newDesc = '';
+      }
+    }
+    if (newDesc !== this._activeDescription) {
+      this._activeDescription = newDesc;
+      this._updateDescription(newDesc);
+    }
+
+    // Phase 5: is-cleared — remove overlay elements when all layers have ended.
+    //
+    // ═══════════════════════════════════════════════════════════════════════════
+    // FINE-TUNE: CLEARED THRESHOLD
+    // Controls how early the title, hint, and description disappear relative
+    // to the last trigger in the inter_vis markdown:
+    //   {% trigger type: image id: all action: end %}
+    //
+    // Value is a fraction of window.innerHeight (viewport height):
+    //   0.50 = fires when the marker reaches the viewport CENTRE
+    //          (same as all other triggers — default on desktop)
+    //   0.65 = fires when marker reaches 65% down — about half a scroll beat earlier
+    //   0.72 = fires when marker reaches 72% down — about one scroll beat earlier
+    //   0.85 = fires when marker reaches 85% down — roughly two scroll beats earlier
+    //
+    // Increase to clear EARLIER (overlays disappear sooner before chapter arrives).
+    // Decrease to clear LATER  (overlays linger longer into the chapter transition).
+    // Only applied on mobile (≤992px); desktop always uses viewportCenter (0.50).
+    // ═══════════════════════════════════════════════════════════════════════════
+    const CLEARED_THRESHOLD_MOBILE = 0.72;   // ← ADJUST THIS VALUE
+
+    const isMobile       = window.innerWidth <= 992;
+    const clearThreshold = isMobile
+      ? window.innerHeight * CLEARED_THRESHOLD_MOBILE
+      : viewportCenter;
+
+    let allEndPassed = false;
+    for (const t of this.triggers) {
+      if (t.id === 'all' && t.action === 'end') {
+        const rect = t.marker.getBoundingClientRect();
+        if (rect.top + rect.height / 2 < clearThreshold) { allEndPassed = true; break; }
+      }
+    }
+
+    const wasCleared = this._wasCleared || false;
+    this._wasCleared = allEndPassed;
+
+    // Toggle CSS class on frame for the background fade (desktop + mobile)
+    this.frame?.classList.toggle('is-cleared', allEndPassed);
+
+    if (allEndPassed && !wasCleared) {
+      // FIRST MOMENT cleared: instantly zero-out all overlay text elements.
+      // transition:none prevents any animation delay before opacity reaches 0.
+      [this.stickyTitle, this.hintEl, this.descriptionEl].forEach(el => {
+        if (!el) return;
+        el.style.transition = 'none';
+        el.style.opacity    = '0';
+      });
+    } else if (!allEndPassed && wasCleared) {
+      // Scrolled back into section: restore CSS-driven transitions by clearing
+      // inline styles so the class-based rules take over again.
+      [this.stickyTitle, this.hintEl, this.descriptionEl].forEach(el => {
+        if (!el) return;
+        el.style.transition = '';
+        el.style.opacity    = '';
+      });
+      this.descriptionEl?.classList.remove('is-cleared');
+    }
+
+    // Description class bookkeeping (kept for CSS fallback on desktop)
+    if (allEndPassed) {
+      if (this._activeDescription !== '') {
+        this._activeDescription = '';
+        this._updateDescription('', true);
+      } else {
+        this.descriptionEl?.classList.add('is-cleared');
+        this.descriptionEl?.classList.remove('is-visible');
+      }
+    }
+  }
+
+  // ── TRANSFORMS ─────────────────────────────────────────────────────────────
+  // Per-id segment selection: find the ONE active segment and stop.
+  // No other segment can overwrite it.
+  _updateTransforms(viewportCenter) {
+    const byId = new Map();
+    this.segments.forEach(seg => {
+      if (!byId.has(seg.id)) byId.set(seg.id, []);
+      byId.get(seg.id).push(seg);
+    });
+
+    byId.forEach((segs, id) => {
+      const img = this.layerEls.get(id);
+      if (!img || parseFloat(img.style.opacity) === 0) return;
+
+      // Debug: log first time this layer has a transform decision
+      if (INTERVIS_DEBUG && !this._debugLogged) {
+        this._debugLogged = true;
+        console.log(`[InterVis] _updateTransforms: ${segs.length} segment(s) for ${id}`);
+        segs.forEach((s, i) => {
+          console.log(`[InterVis]   seg${i}: from(${s.from.coords}) → to(${s.to.coords})`);
+        });
+      }
+
+      let applied = false;
+
+      for (const seg of segs) {
+        const fromRect = seg.from.marker.getBoundingClientRect();
+        const toRect   = seg.to.marker.getBoundingClientRect();
+        const fromY    = fromRect.top + fromRect.height / 2;
+        const toY      = toRect.top   + toRect.height  / 2;
+
+        if (fromY >= viewportCenter) {
+          // BEFORE this segment — hold at "from"
+          this._setTransform(img, seg.from.zoom, this._cx(seg.from.coords), this._cy(seg.from.coords));
+          applied = true;
+          break;
+        }
+
+        if (toY > viewportCenter) {
+          // WITHIN this segment — lerp
+          const t    = Math.max(0, Math.min(1, (viewportCenter - fromY) / (toY - fromY)));
+          const zoom = this._lerp(seg.from.zoom, seg.to.zoom, t);
+          const x    = this._lerp(this._cx(seg.from.coords), this._cx(seg.to.coords), t);
+          const y    = this._lerp(this._cy(seg.from.coords), this._cy(seg.to.coords), t);
+          this._setTransform(img, zoom, x, y);
+          applied = true;
+          break;
+        }
+        // else: PAST this segment — continue to next
+      }
+
+      // Past ALL segments — hold at last "to"
+      if (!applied && segs.length > 0) {
+        const last = segs[segs.length - 1];
+        this._setTransform(img, last.to.zoom, this._cx(last.to.coords), this._cy(last.to.coords));
+      }
+    });
+  }
+
+  // ── SET TRANSFORM ──────────────────────────────────────────────────────────
+  // TRANSLATE MODE (zoom == 10, scale == 1×):
+  //   Positions dot at (x%, y%) of the frame.
+  //   Formula: translate((x-50)%, (y-50)%)
+  //   Dot is centered at 50% of element. To place at x%:
+  //     50% + translate_x = x%  →  translate_x = (x-50)%
+  //
+  // ZOOM MODE (zoom ≠ 10):
+  //   Zooms into focal point (x%, y%).
+  //   Formula: transform-origin: x% y%; scale(zoom/10)
+  //
+  // NO CSS transition on transform — written every frame by lerp.
+  _setTransform(img, zoom, x, y) {
+    const scale = (zoom || 10) / 10;
+
+    if (Math.abs(scale - 1.0) < 0.001) {
+      const tx = (x - 50).toFixed(3);
+      const ty = (y - 50).toFixed(3);
+      img.style.transformOrigin = '50% 50%';
+      img.style.transform       = `translate(${tx}%, ${ty}%)`;
+    } else {
+      img.style.transformOrigin = `${x.toFixed(3)}% ${y.toFixed(3)}%`;
+      img.style.transform       = `scale(${scale.toFixed(4)})`;
+    }
+  }
+
+  _cx(coords) {
+    if (!coords) return 50;
+    const v = parseFloat(coords.split(',')[0]);
+    return isNaN(v) ? 50 : (v / 1000) * 100;
+  }
+
+  _cy(coords) {
+    if (!coords) return 50;
+    const parts = coords.split(',');
+    if (parts.length < 2) return 50;
+    const v = parseFloat(parts[1]);
+    return isNaN(v) ? 50 : (v / 1000) * 100;
+  }
+
+  _lerp(a, b, t) { return a + (b - a) * t; }
+
+  // ── GET OR CREATE LAYER ────────────────────────────────────────────────────
+  _getOrCreateLayer(id) {
+    if (this.layerEls.has(id)) return this.layerEls.get(id);
+
+    const img         = document.createElement('img');
+    img.className     = 'intervis-layer';
+    img.alt           = '';                        // empty: frame aria-labelledby covers description
+    img.setAttribute('aria-hidden', 'true');       // hide from AT — parent frame has role="img" + label
+    img.setAttribute('role',        'presentation'); // belt-and-suspenders for older screen readers
+    img.style.opacity = '0';
+    img.src           = this._basePath + id + '.png';
+
+    const first = this.triggers.find(t => t.id === id);
+    if (first) {
+      this._setTransform(img, first.zoom, this._cx(first.coords), this._cy(first.coords));
+      if (INTERVIS_DEBUG) {
+        console.log(`[InterVis] Created layer "${id}". First trigger coords: ${first.coords} → translate(${(this._cx(first.coords)-50).toFixed(1)}%, ${(this._cy(first.coords)-50).toFixed(1)}%)`);
+      }
+    }
+
+    img.addEventListener('error', () => {
+      console.warn(`[InterVis] ⚠ Could not load "${id}" from ${img.src}`);
+    }, { once: true });
+
+    this.layerContainer.appendChild(img);
+    this.layerEls.set(id, img);
+    return img;
+  }
+
+  // ── DESCRIPTION ────────────────────────────────────────────────────────────
+  _updateDescription(text, isCleared = false) {
+    if (!this.descriptionEl) return;
+
+    if (isCleared) {
+      this.descriptionEl.classList.add('is-cleared');
+      this.descriptionEl.classList.remove('is-visible');
+      return;
+    }
+
+    if (text) {
+      this.descriptionEl.classList.remove('is-cleared');
+      this.descriptionEl.textContent = text;
+      requestAnimationFrame(() => {
+        if (this.descriptionEl) this.descriptionEl.classList.add('is-visible');
+      });
+    } else {
+      this.descriptionEl.classList.remove('is-visible');
+      this.descriptionEl.classList.remove('is-cleared');
+      setTimeout(() => {
+        if (!this._activeDescription && this.descriptionEl) {
+          this.descriptionEl.textContent = '';
+        }
+      }, 600);
+    }
+  }
+
+  _clearAllLayers() {
+    this.layerEls.forEach(img => { img.style.opacity = '0'; });
+    this._lastOpacity.clear();
+  }
+
+  destroy() {
+    this._visibilityObserver?.disconnect();
+    this._clearAllLayers();
+    this.layerEls.forEach(img => img.remove());
+    this.layerEls.clear();
+  }
+}
+</script>

@@ -1,0 +1,535 @@
+/* ============================================================================
+   INTER_VIS — Interstitial Visualization Sections
+
+   Frame: position:absolute within .scrolly-image-frame (position:relative).
+   overflow:hidden clips scaled layers to the image column.
+
+   Desktop: hint, title, description are position:fixed in the text column
+   (left:56vw to right:10vw). Driven by .intervis-frame.is-active selectors.
+
+   Mobile: frame becomes position:fixed covering the full viewport below the
+   header. The layer-container fills as a SQUARE (enforced by explicit equal
+   width/height using viewport units) centered in the frame. Description,
+   hint, and title are position:absolute overlays inside the frame — the
+   description above the square, the title below — so the visualization
+   occupies all available screen space. No flex layout on the frame.
+   ============================================================================ */
+
+
+/* ── Visually-hidden alt text for the full inter_vis section ────────────────── */
+/*
+  A single descriptive sentence covering the entire visualization is more useful
+  to screen-reader and keyboard users than per-layer alt text, which would be
+  too abstract (e.g. "layer image" repeated per PNG). The element is rendered
+  in the DOM but clipped to 1px so it is announced by screen readers without
+  affecting the visual layout.
+
+  Set the text via `alt_text:` in the inter_vis page front matter.
+  The frame receives role="img" and aria-labelledby pointing to this element.
+*/
+.intervis-alt-text {
+  position:   absolute;
+  width:      1px;
+  height:     1px;
+  padding:    0;
+  margin:     -1px;
+  overflow:   hidden;
+  clip:       rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border:     0;
+}
+
+
+/* ── Frame ─────────────────────────────────────────────────────────────────── */
+.intervis-frame {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index:  5;
+  overflow: hidden;
+  pointer-events: none;
+  opacity:    0;
+  transition: opacity 0.8s ease;
+}
+.intervis-frame.is-active { opacity: 1; }
+
+
+/* ── Layer container ────────────────────────────────────────────────────────── */
+/*
+  SQUARE CONTAINER — critical for coordinate accuracy at all screen sizes.
+
+  The source PNG layers are 1920×1920 (square). translate((x-50)%, (y-50)%)
+  percentages in CSS reference the layer element's OWN dimensions. When the
+  container is rectangular (non-square), object-fit:contain letterboxes the
+  image into the smaller dimension — but translate percentages still reference
+  the full container bounds, not the rendered image content area. This causes
+  coordinate drift as the screen aspect ratio changes:
+
+    Portrait column (42vw < 100vh): letterboxing above/below → y coordinates shift
+    Landscape column (42vw > 100vh): letterboxing left/right  → x coordinates shift
+
+  With a square container matching the 1920×1920 sources, there is zero
+  letterboxing and translate() percentages map identically regardless of
+  whether the viewer is on a standard monitor, wide monitor, or any size in
+  between.
+
+  Size = min(image-column-width, image-column-height)
+       = min(42vw, 100vh - header)
+  Centered via position:absolute + translate(-50%, -50%).
+  The .intervis-frame's overflow:hidden clips everything to the column bounds.
+*/
+.intervis-layer-container {
+  position: absolute;
+  width:  min(42vw, calc(100vh - var(--scrolly-header-h, 52px)));
+  height: min(42vw, calc(100vh - var(--scrolly-header-h, 52px)));
+  left:   50%;
+  top:    50%;
+  right:  auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+
+/* ── Individual layers ──────────────────────────────────────────────────────── */
+.intervis-layer {
+  position:   absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  opacity:    0;
+  transition: opacity 2s ease;
+  z-index:    1;
+  user-select:    none;
+  pointer-events: none;
+}
+
+body:not(.light-mode) .intervis-layer { filter: invert(1); }
+body.light-mode        .intervis-layer { filter: none; }
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DESKTOP OVERLAY ELEMENTS
+   All three use position:fixed so they escape .intervis-frame's overflow:hidden
+   and appear in the text column (left:56vw to right:10vw).
+   Visibility is driven by .intervis-frame.is-active descendant selectors.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Scroll hint ────────────────────────────────────────────────────────────── */
+.intervis-scroll-hint {
+  position: fixed;
+  top:   calc(var(--scrolly-header-h, 52px) + 2rem);
+  left:  56vw;
+  right: 10vw;
+
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  text-align:      center;
+  gap:             0.4rem;
+
+  font-family:    "Times New Roman", Times, serif;
+  font-size:      1.0rem;
+  font-style:     normal;
+  font-weight:    600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color:          rgba(255, 255, 255, 0.80);
+  pointer-events: none;
+  z-index:        110;
+
+  opacity:    0;
+  transform:  translateY(-5px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.intervis-frame.is-active .intervis-scroll-hint:not(.is-dismissed) {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+.intervis-frame.is-active.is-cleared .intervis-scroll-hint {
+  opacity:    0 !important;
+  transform:  translateY(-5px) !important;
+  transition: opacity 1.5s ease, transform 1.5s ease !important;
+}
+
+.intervis-scroll-hint .scroll-hint-arrow {
+  display:        block;
+  font-size:      1.4rem;
+  font-weight:    400;
+  letter-spacing: 0;
+  text-transform: none;
+  animation: intervisBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes intervisBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
+}
+
+body.light-mode .intervis-scroll-hint { color: rgba(0, 0, 0, 0.72); }
+
+
+/* ── Sticky title ───────────────────────────────────────────────────────────── */
+.intervis-sticky-title {
+  position: fixed;
+  bottom:   calc(2.8rem + 2rem);
+  left:     56vw;
+  right:    10vw;
+
+  font-family:    "Times New Roman", Times, serif;
+  font-size:      1.4rem;
+  font-style:     normal;
+  font-weight:    700;
+  letter-spacing: 0.01em;
+  line-height:    1.35;
+  color:          rgba(255, 255, 255, 0.92);
+  text-align:     center;
+  pointer-events: none;
+  z-index:        110;
+
+  opacity:    0;
+  transform:  translateY(6px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.intervis-frame.is-active .intervis-sticky-title {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+.intervis-frame.is-active.is-cleared .intervis-sticky-title {
+  opacity:    0 !important;
+  transform:  translateY(6px) !important;
+  transition: opacity 1.5s ease, transform 1.5s ease !important;
+}
+
+body.light-mode .intervis-sticky-title { color: rgba(0, 0, 0, 0.88); }
+
+
+/* ── Description ────────────────────────────────────────────────────────────── */
+.intervis-description {
+  position: fixed;
+  top:    calc(var(--scrolly-header-h, 52px) + 5rem);
+  bottom: calc(2.8rem + 5.5rem);
+  left:   56vw;
+  right:  10vw;
+
+  display:         flex;
+  align-items:     center;
+  justify-content: flex-start;
+
+  font-family:    "Times New Roman", Times, serif;
+  font-size:      1.15rem;
+  font-style:     normal;
+  font-weight:    500;
+  letter-spacing: 0.01em;
+  line-height:    1.6;
+  color:          rgba(255, 255, 255, 0.85);
+  text-align:     left;
+  pointer-events: none;
+  z-index:        110;
+
+  opacity:    0;
+  transition: opacity 0.5s ease;
+}
+
+.intervis-description.is-visible { opacity: 1; }
+
+.intervis-description.is-cleared {
+  opacity:    0  !important;
+  transition: opacity 1.5s ease !important;
+}
+
+body.light-mode .intervis-description { color: rgba(0, 0, 0, 0.78); }
+
+
+/* ── Trigger block ──────────────────────────────────────────────────────────── */
+.intervis-trigger-block {
+  position:       relative;
+  z-index:        1;
+  pointer-events: none;
+  user-select:    none;
+  opacity:        0;
+  overflow:       hidden;
+  min-height:     0;
+  padding:        0;
+  max-width:      none;
+  margin:         0;
+
+  /* ══════════════════════════════════════════════════════════════════════════
+     SCROLL DISTANCE BETWEEN TRIGGER COMMANDS
+     Desktop: 52vh  |  Mobile override below: 42vh
+     ══════════════════════════════════════════════════════════════════════════ */
+  [data-trigger-type] {
+    display:    block   !important;
+    visibility: hidden  !important;
+    height:     52vh    !important;
+    width:      1px     !important;
+    margin:     0       !important;
+    padding:    0       !important;
+    overflow:   hidden  !important;
+  }
+}
+
+
+/* ── Inter_vis separator ────────────────────────────────────────────────────── */
+.chapter-separator.intervis-separator {
+  height:      5vh;
+  padding:     0;
+  margin:      0;
+  align-items: flex-start;
+
+  img {
+    width:      1px  !important;
+    height:     1px  !important;
+    opacity:    0    !important;
+    visibility: hidden !important;
+    filter:     none !important;
+  }
+}
+
+
+/* ── TOC: inter_vis entries ─────────────────────────────────────────────────── */
+.toc-intervis-entry > .scrolly-toc-link {
+  padding-left:   1.1rem;
+  font-size:      0.86rem;
+  font-style:     italic;
+  font-weight:    400;
+  color:          rgba(255, 255, 255, 0.30);
+  letter-spacing: 0.01em;
+  line-height:    1.2;
+
+  &:hover      { color: rgba(255, 255, 255, 0.62); background-color: rgba(255, 255, 255, 0.04); }
+  &.toc-active { color: rgba(255, 255, 255, 0.75); font-weight: 500; }
+}
+
+body.light-mode .toc-intervis-entry > .scrolly-toc-link {
+  color: rgba(0, 0, 0, 0.26);
+  &:hover      { color: rgba(0, 0, 0, 0.58); }
+  &.toc-active { color: rgba(0, 0, 0, 0.70); }
+}
+
+.offcanvas-menu .toc-intervis-entry > .scrolly-toc-link {
+  padding-left: 1.1rem !important;
+  font-size:    0.9rem  !important;
+  font-style:   italic  !important;
+  color:        rgba(255, 255, 255, 0.28) !important;
+  &:hover { color: rgba(255, 255, 255, 0.60) !important; }
+}
+
+html.light-mode .offcanvas-menu .toc-intervis-entry > .scrolly-toc-link,
+body.light-mode .offcanvas-menu .toc-intervis-entry > .scrolly-toc-link {
+  color: rgba(0, 0, 0, 0.25) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MOBILE ≤ 992px
+
+   LAYOUT STRATEGY — matches Image 1 exactly:
+   • Frame covers full viewport below header (position:fixed, no flex layout)
+   • Layer container is a SQUARE centered in the frame via position:absolute +
+     transform:translate(-50%,-50%). All overlay elements (hint, description,
+     title) are also position:absolute within the frame, layered on top.
+   • Description sits in the space above the square (toward frame top)
+   • Title sits in the space below the square (toward frame bottom)
+   • The square fills as much of the screen as possible:
+       width = height = min(96vw, frameHeight - 7rem)
+     This leaves ~3.5rem at top for description and ~3.5rem at bottom for title.
+
+   WHY SQUARE MATTERS FOR COORDINATE ACCURACY:
+   Source layers are 1920×1920 (square). translate(tx%, ty%) percentages in CSS
+   reference the layer element's OWN dimensions. With a square container:
+     • All layers render at identical pixel bounds (zero letterboxing)
+     • translate(-32.5%, +22%) maps the same pixels on every layer
+   With a non-square container, each layer still renders its image identically
+   (same letterboxing), but the translate percentages reference different pixel
+   distances horizontally vs vertically — the x and y scales remain consistent
+   because each maps to its respective container dimension. However, object-fit:
+   contain on a non-square container clips the letterboxed areas differently
+   across layers if one layer's image has different content bounds. Using a
+   square eliminates all letterboxing and keeps coordinates 1:1 with desktop.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 992px) {
+
+  /* ── Full-screen fixed frame — NO flex, NO column layout ────────────────── */
+  .intervis-frame {
+    position: fixed !important;
+    top:    calc(var(--scrolly-header-h, 52px) + env(safe-area-inset-top, 0px)) !important;
+    left:   0      !important;
+    right:  0      !important;
+    bottom: 2.8rem !important;   /* clear footer nav */
+    width:  100vw  !important;
+    height: auto   !important;
+    z-index: 200   !important;
+    overflow: hidden !important;
+    /* NO display:flex — all children are position:absolute overlays */
+    background-color: var(--scrolly-bg-color, #111111);
+  }
+
+  body.light-mode .intervis-frame {
+    background-color: #ffffff;
+  }
+
+  /* ── KEY MOBILE FIX: fade the frame itself when all layers have ended ────────
+     On desktop .intervis-frame is position:absolute inside the image column and
+     never covers the text column — so .is-cleared only needs to fade layer
+     content (title, hint, description). On mobile the frame is position:fixed
+     z-index:200 covering the ENTIRE viewport including the chapter text column.
+     Its background-color (#111) stays opaque until the IntersectionObserver
+     removes .is-active, which only happens after the FULL trigger block
+     (including padding-bottom) exits the viewport — up to 150vh of scrolling
+     after the last trigger. This rule fades the frame to transparent as soon as
+     .is-cleared is set (when id:all action:end passes viewportCenter), revealing
+     the chapter text immediately rather than after 150vh of masked scrolling. */
+  .intervis-frame.is-active.is-cleared {
+    opacity:    0 !important;
+    transition: opacity 1.5s ease !important;
+  }
+
+  /* ── Square layer container — as large as possible, centered ─────────────
+     Both width and height use the SAME computed value so the container is
+     always square regardless of phone dimensions.
+
+     min(96vw, calc(100vh - header - nav - 7rem)):
+       96vw   = 96% of viewport width (small side margins)
+       -7rem  = reserves ~3.5rem top (hint + description) + ~3.5rem bottom (title)
+       header = var(--scrolly-header-h, 52px)
+       nav    = 2.8rem (footer bar)
+
+     position:absolute + left:50% + top:50% + transform:translate(-50%,-50%)
+     centers the square in the frame. The container's own transform is separate
+     from the per-layer translate() transforms applied by JS.
+     ──────────────────────────────────────────────────────────────────────── */
+  .intervis-layer-container {
+    position: absolute !important;
+
+    /* Compute the square size once and apply to both dimensions */
+    width:  min(96vw, calc(100vh - var(--scrolly-header-h, 52px) - 2.8rem - 7rem)) !important;
+    height: min(96vw, calc(100vh - var(--scrolly-header-h, 52px) - 2.8rem - 7rem)) !important;
+
+    /* Center in the frame */
+    left:   50%  !important;
+    top:    50%  !important;
+    right:  auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+
+    overflow: hidden !important;
+  }
+
+  /* ── Scroll hint — absolute at top of frame, above the square ───────────── */
+  .intervis-scroll-hint {
+    position:        absolute !important;
+    top:             0.6rem   !important;
+    left:            0        !important;
+    right:           0        !important;
+    bottom:          auto     !important;
+    font-size:       0.75rem  !important;
+    letter-spacing:  0.12em   !important;
+    align-items:     center   !important;
+    justify-content: center   !important;
+    /* Reset desktop translateY */
+    transform:       none     !important;
+    transition:      opacity 0.6s ease !important;
+  }
+
+  .intervis-frame.is-active .intervis-scroll-hint:not(.is-dismissed) {
+    opacity:   1 !important;
+    transform: none !important;
+  }
+
+  .intervis-frame.is-active.is-cleared .intervis-scroll-hint {
+    opacity:    0 !important;
+    transform:  none !important;
+    transition: opacity 1.5s ease !important;
+  }
+
+  /* ── Description — absolute, above the square, below the hint ───────────── */
+  .intervis-description {
+    /* position:fixed — NOT absolute. Lives on document.body to escape the
+       frame's opacity stacking context. Fixed resolves to the viewport. */
+    position:        fixed  !important;
+
+    /* ── VERTICAL POSITION DERIVATION ────────────────────────────────────────
+       The layer-container square is centered in the frame:
+         frame top    = var(--scrolly-header-h)
+         frame height = 100vh - header - 2.8rem (footer)
+         square size  = min(96vw, frame_height - 7rem)
+         square center in viewport = header + frame_height / 2
+                                   = (100vh + header - 2.8rem) / 2
+         square top in viewport    = square_center - square_size / 2
+
+       On portrait phones 96vw < (frame_height - 7rem), so square_size = 96vw:
+         square top = (100vh + header - 2.8rem) / 2 - 48vw
+
+       Setting description bottom = square top with 0.5rem gap:
+         bottom_css = 50vh + 48vw + 1.9rem - header / 2
+
+       ── TO FINE-TUNE: if description still overlaps visualization, increase
+          the constant (1.9rem → 2.5rem). If gap is too large, decrease it. ── */
+    top:    calc(var(--scrolly-header-h, 52px) + 0.5rem) !important;
+    bottom: calc(50vh + 48vw + 1.9rem - var(--scrolly-header-h, 52px) / 2) !important;
+
+    left:  1rem !important;
+    right: 1rem !important;
+
+    display:         flex   !important;
+    align-items:     center !important;
+    justify-content: center !important;
+    text-align:      center !important;
+
+    /* ── FONT SIZE: clamp(min, fluid, max) ───────────────────────────────────
+       Scales with viewport width so longer descriptions shrink automatically.
+       Adjust the minimum (0.72rem) if four-sentence descriptions still clip. */
+    font-size: clamp(0.72rem, 2.8vw, 0.92rem) !important;
+
+    overflow:   hidden !important;
+    transform:  none   !important;
+    transition: opacity 0.5s ease !important;
+  }
+
+  .intervis-description.is-visible { opacity: 1; }
+  .intervis-description.is-cleared {
+    opacity:    0  !important;
+    transition: opacity 1.5s ease !important;
+  }
+
+  /* ── Title — absolute at bottom of frame, below the square ─────────────── */
+  .intervis-sticky-title {
+    position:   absolute !important;
+    bottom:     0.6rem   !important;
+    left:       0        !important;
+    right:      0        !important;
+    top:        auto     !important;
+    font-size:  1.05rem  !important;
+    text-align: center   !important;
+    /* Reset desktop translateY */
+    transform:  none     !important;
+    transition: opacity 0.7s ease !important;
+  }
+
+  .intervis-frame.is-active .intervis-sticky-title {
+    opacity:   1 !important;
+    transform: none !important;
+  }
+
+  .intervis-frame.is-active.is-cleared .intervis-sticky-title {
+    opacity:    0 !important;
+    transform:  none !important;
+    transition: opacity 1.5s ease !important;
+  }
+
+  /* ── Light mode ──────────────────────────────────────────────────────────── */
+  body.light-mode .intervis-scroll-hint  { color: rgba(0, 0, 0, 0.65) !important; }
+  body.light-mode .intervis-sticky-title { color: rgba(0, 0, 0, 0.85) !important; }
+  body.light-mode .intervis-description  { color: rgba(0, 0, 0, 0.72) !important; }
+
+  /* ── Mobile scroll distance ── */
+  .intervis-trigger-block [data-trigger-type] { height: 42vh !important; }
+
+  .toc-intervis-entry > .scrolly-toc-link { font-size: 0.82rem; }
+}

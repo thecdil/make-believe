@@ -1,0 +1,142 @@
+---
+layout: default
+gallery: true
+---
+
+{% include essay/header-scrollytelling.html %}
+
+{%- assign actual_essays = site.essay | where_exp: "item", "item.title and item.order" -%}
+{%- assign essay_count = actual_essays.size -%}
+
+{%- if essay_count == 1 -%}
+  <script src="{{ '/assets/lib/scrollama.js' | relative_url }}"></script>
+  {% include essay/off-canvas-menu.html %}
+{%- endif -%}
+
+<link rel="stylesheet" href="{{ '/assets/css/scrolly.css' | relative_url }}">
+
+{%- assign all_sorted = site.essay | sort: 'order' -%}
+{%- assign first_essay = all_sorted | first -%}
+
+<aside class="scrolly-toc-sidebar" id="home-toc-sidebar" aria-label="Table of contents">
+  <p class="scrolly-toc-heading">Contents</p>
+  <ul class="scrolly-toc-list">
+
+    <li>
+      <a href="{{ '/' | relative_url }}" class="scrolly-toc-link">Home</a>
+    </li>
+
+    <!--
+      Home TOC shows ONLY chapters (not inter_vis entries).
+      Each chapter link points to the preceding inter_vis (if one exists at order - 1),
+      so the reader enters the visualization prelude before the chapter text.
+      Chapters are numbered by chap_number front matter, not order.
+    -->
+    {% assign toc_all = site.essay | sort: 'order' %}
+    {% for essay in toc_all %}
+      {% unless essay.layout == 'inter_vis' %}
+
+        {% comment %} Find the essay at order - 1 {% endcomment %}
+        {% assign prev_order = essay.order | minus: 1 %}
+        {% assign preceding  = toc_all | where: "order", prev_order | first %}
+
+        {% comment %} If the preceding essay is inter_vis, link there instead {% endcomment %}
+        {% if preceding.layout == 'inter_vis' %}
+          {% assign nav_url = preceding.url %}
+        {% else %}
+          {% assign nav_url = essay.url %}
+        {% endif %}
+
+        <li class="toc-chapter-entry">
+          <a href="{{ nav_url | prepend: site.baseurl }}"
+             class="scrolly-toc-link"
+             data-toc-chapter="{{ essay.order }}">
+            {% if essay.chap_number %}{{ essay.chap_number }}. {% endif %}{{ essay.title }}
+          </a>
+        </li>
+
+      {% endunless %}
+    {% endfor %}
+
+    <hr class="toc-divider">
+
+    {% for nav in site.data.config-nav %}
+      {% unless nav.stub == "/" or nav.stub contains "/essay/" %}
+    <li>
+      <a href="{{ nav.stub | relative_url }}" class="scrolly-toc-link">{{ nav.display_name }}</a>
+    </li>
+      {% endunless %}
+    {% endfor %}
+
+  </ul>
+</aside>
+
+<div id="home-grid">
+
+  <div id="home-col-identity">
+    <h1 class="home-site-title">{{ site.title }}</h1>
+    {% if site.tagline %}<p class="home-site-tagline">{{ site.tagline }}</p>{% endif %}
+    {% if site.author  %}<p class="home-site-author">{{ site.author }}</p>{% endif %}
+    {% if site.description %}<p class="home-site-description">{{ site.description }}</p>{% endif %}
+  </div>
+
+  <div id="home-col-abstract">
+    <h2 class="home-abstract-heading">About This Project</h2>
+
+    {% if site.abstract %}
+      {{ site.abstract }}
+    {% else %}
+    <p class="home-abstract-text">Between 1889 and 1923, the city of Spokane, Washington was shaped by a nearly forgotten source of outside influence: Dutch investment capital that flowed into the region following the diamond boom of the 1870s in South Africa. Wealth generated at the Kimberley mines passed through Amsterdam's merchant class and into American railway bonds, giving a small group of foreign investors significant control over the financial infrastructure of the inland Northwest. The civic identity that Spokane projected outward during this period through festivals, architecture and "Inland Empire" marketing campaign was less an expression of pioneer pride than a performance of American identity that obscured its relationship with foreign capital.</p>
+
+    <p class="home-abstract-text">While imitation of cultures was common for European American settlers in the Pacific Northwest during this period, Spokane's marketing strategies uniquely relied on a widespread, public display of ethnic and class-based imitation. The city's rapid Dutch-financed reconstruction following the 1889 fire created a metropolis amidst otherwise sparse agricultural hubs, generating conflict between the built environment and pioneer identities which was mediated by civic rituals and commercial displays.</p>
+
+    <p class="home-abstract-text">Placing Spokane within evolving ideologies of U.S. expansion, this paper highlights the contradiction between America's professed aversion to foreign entanglement and its imperial practices. Drawing on Dutch-language media and interviews with foreign financiers, this exhibit introduces an international perspective largely absent from existing work. The exhibit draws on a wide range of archival visual materials that document pioneer iconography and expressions of ethnic anxiety with a level of transparency absent from most written accounts. To support this visually-driven approach, this work is presented as a custom digital exhibit, enabling readers to place these materials in direct dialogue with the historic media, correspondence, and literature that form the foundation of the research.</p>
+
+    <br>
+    {% endif %}
+  </div>
+
+  <div id="home-col-right">
+    <div class="home-right-image-area">
+      {% if site.data.theme.featured-image %}
+      <img src="{{ site.data.theme.featured-image | relative_url }}"
+           alt="{{ site.data.theme.featured-image-alt-text | default: site.title }}">
+      {% endif %}
+      {% if site.data.theme.featured-image-credit %}
+      <p class="home-featured-credit">{{ site.data.theme.featured-image-credit }}</p>
+      {% endif %}
+    </div>
+    <div class="home-right-cta">
+      <!--
+        "Read" links to the first essay (which may be an inter_vis section).
+        If the essay begins with a visualization, the reader enters there first.
+      -->
+      {%- if essay_count >= 1 and first_essay -%}
+      <a class="home-read-btn" href="{{ first_essay.url | relative_url }}">Read &raquo;</a>
+      {%- else -%}
+      <a class="home-read-btn" href="#single-essay-content">Read &raquo;</a>
+      {%- endif -%}
+    </div>
+  </div>
+
+</div>
+
+{%- if essay_count == 1 -%}
+{%- assign single_essay = actual_essays[0] -%}
+<div id="single-essay-content" class="container my-5">
+  <div class="row">
+    <div id="scrolly" class="container my-4">
+      <article id="step0">
+        <h1 class="display-4 essay-main" id="page-title">{{ single_essay.title }}</h1>
+        <div class="row my-4 step visible-step">
+          <div class="essay-main">{{ single_essay.content }}</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+{%- unless single_essay.scrollama == false -%}{% include essay/js/essay-scroll-js.html %}{%- endunless -%}
+{% include essay/js/spotlight-media-handler.html %}
+{%- endif -%}
+
+{% include essay/footer-scrollytelling.html %}

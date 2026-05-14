@@ -1,0 +1,2072 @@
+{ "objects": [{
+        "objectid": "make_believe_001",
+        "title": "Spokane, the Playground of the Nation",
+        "creator": "<em>Algemeen Handelsblad</em>",
+        "date": "1931-01-31",
+        "description": "Article in the Amsterdam-based newspaper, <em>Algemeen Handelsblad</em>, describing the history of Dutch investment in Spokane, WA.",
+        "subject": "newspapers;articles;urban development;street scenes;pedestrians",
+        "location": "Amsterdam, NL",
+        "latitude": "52.36763599",
+        "longitude": "4.899494781",
+        "source": "Delpher",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "nl",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_001_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_001_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_001.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_001.html"
+    },
+    {
+        "objectid": "make_believe_002",
+        "title": "Spokane Fire, 1889 (#14)",
+        
+        "date": "1889-08-05",
+        "description": "Looking north from Railroad Avenue after the fire.",
+        "subject": "fires (events);ruins;tents",
+        "location": "North Railroad Avenue, Spokane, WA",
+        "latitude": "47.38632621",
+        "longitude": "-117.172104",
+        "source": "Teakle Collection. Northwest Room. Spokane Public Library",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        "rights": "Spokane Public Library has determined that this unpublished photograph was created before 1900 and has passed into the public domain.",
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_002_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_002_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_002.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_002.html"
+    },
+    {
+        "objectid": "make_believe_003",
+        "title": "Spokane Fire, 1889 (#24)",
+        "creator": "Robert B. Hyslop",
+        "date": "1982",
+        "description": "Map showing boundaries of the August 4, 1889 fire. Map owned and drawn by Robert Hyslop, 1982.",
+        "subject": "base maps;fires (events);cartography (discipline)",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Northwest Room, Spokane Public Library",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        "rights": "Spokane Public Library is reasonably sure that the object is in copyright. A good faith effort by Spokane Public Library has been made to identify the copyright holder of this object, but none has been identified or located as of 2020. Please contact nwroom@spokanelibrary.org for more information about how this object can be used.",
+        "rightsstatement": "http://rightsstatements.org/vocab/InC-EDU/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_003_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_003_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_003.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_003.html"
+    },
+    {
+        "objectid": "make_believe_004",
+        "title": "County Deed Records, 1893–97",
+        
+        "date": "1925",
+        "description": "Hypotheekbank property ownership noted on business district map of Spokane. From 1925 map, <em>Spokane City Engineer</em>.",
+        "subject": "business districts;central business districts;base maps",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/InC-EDU/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_004_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_004_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_004.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_004.html"
+    },
+    {
+        "objectid": "make_believe_005",
+        "title": "Dutch Cocoa Powder Tin",
+        "creator": "Cocoamill de Zaanstroom",
+        "date": "1905-03-14",
+        "description": "Decorative tin of Dutch cocoa powder housed in Sloane's Northwest Museum of Arts and Culture.",
+        "subject": "tinsmiths;plates (illustrations);windmills;waterways;floral patterns",
+        "location": "Zaanstroom, Wormerveer, NL",
+        "latitude": "52.49479482",
+        "longitude": "4.793980084",
+        "source": "Eastern Washington State Historical Society. Artifacts Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "nl",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/InC-EDU/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_005_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_005_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_005.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_005.html"
+    },
+    {
+        "objectid": "make_believe_006",
+        "title": "Spokane Pow Wow Parade",
+        
+        "date": "1913",
+        "description": "Parade in Spokane Pow Wow event featuring a performer in a powdered wig and stilts with marching band playing on the street behind him.",
+        "subject": "parades;street scenes;musical instruments",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "E.T. Hawk Photograph Collection. Item SPC-023-0996_01_211. Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_006_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_006_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_006.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_006.html"
+    },
+    {
+        "objectid": "make_believe_007",
+        "title": "Spokesman-Review Letterhead",
+        "creator": "The Spokesman-Review and Spokane Daily Chronicle",
+        "date": "1936-11-01",
+        "description": "Detail from a correspondence between the paper and Spokane Flour Mills.",
+        "subject": "letterheads;marginal illustrations;bell towers;Doric columns;base maps;street scenes",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Spokane Flour Mill Records, 1903–1948. Ms 3. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_007_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_007_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_007.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_007.html"
+    },
+    {
+        "objectid": "make_believe_008",
+        "title": "Illustration of South African Dutch Colonial Interests",
+        
+        "date": "1890",
+        "description": "Overlapping illustrations of scenes in South Africa, including a ship's perspective view of Cape Town and a bird's eye perspective of diamond mine operations.",
+        "subject": "bird's-eye views;colonies;mining;ships;urban landscapes",
+        "location": "Kimberely, ZA",
+        "latitude": "-28.73891102",
+        "longitude": "24.75849334",
+        "source": "David Rumsey Historical Map Collection",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "nl",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_008_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_008_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_008.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_008.html"
+    },
+    {
+        "objectid": "make_believe_009",
+        "title": "Kimberely, Mines de Diamant de Beers",
+        "creator": "Edouard Foà",
+        "date": "1891",
+        "description": "Photograph of diamond operations in the Kimberly Mines, controlled by the British De Beers company.",
+        "subject": "photographs;mining;shaft mining;mine structures",
+        "location": "Kimberely, ZA",
+        "latitude": "-28.73891102",
+        "longitude": "24.75849334",
+        "source": "Getty Research Institute, Special Collections",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "fr",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_009_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_009_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_009.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_009.html"
+    },
+    {
+        "objectid": "make_believe_010",
+        "title": "Travailleurs days les Mines de Diamant",
+        "creator": "Edouard Foà",
+        "date": "1891",
+        "description": "Photograph of two laborers working inside the Kimberely Mines.",
+        "subject": "photographs;laborers;hand tools",
+        "location": "Kimberely, ZA",
+        "latitude": "-28.73891102",
+        "longitude": "24.75849334",
+        "source": "Getty Research Institute, Special Collections",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "fr",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_010_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_010_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_010.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_010.html"
+    },
+    {
+        "objectid": "make_believe_011",
+        "title": "Die Perle, Chromolithograph Illustration",
+        "creator": "Martin Gerlach",
+        "date": "1872",
+        "description": "Illustration of a series of gold, diamond and pearl jewelry.",
+        "subject": "chromolithographs;brooches;jewelry;pins (jewelry);rings (jewelry)",
+        
+        
+        
+        "source": "The Miriam and Ira D. Wallach Division of Art, Prints and Photographs, Art & Architecture Collection, New York Public Library.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "de",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_011_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_011_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_011.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_011.html"
+    },
+    {
+        "objectid": "make_believe_012",
+        "title": "Portrait of James J. Hill",
+        "creator": "Charles Alfred Zimmerman",
+        "date": "1885",
+        "description": "Studio portrait of the founder of the Great Northern Railroad company.",
+        "subject": "portraits;vests (garments);jackets;facial hairstyles",
+        "location": "St. Paul, MN",
+        "latitude": "44.95352842",
+        "longitude": "-93.09369854",
+        "source": "Minnesota Historical Society, Minnesota Digital Library",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_012_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_012_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_012.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_012.html"
+    },
+    {
+        "objectid": "make_believe_013",
+        "title": "Great Northern Railway and Connections",
+        "creator": "Great Northern Railway",
+        "date": "1909",
+        "description": "Map of the Great Nothern Railway stations, reaching from St. Paul, MN to Seattle, WA.",
+        "subject": "transportation maps;railroads (infrastructure);cartography (discipline)",
+        
+        
+        
+        "source": "Manuscripts, Archives, and Special Collections, Washington State University Libraries",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_013_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_013_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_013.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_013.html"
+    },
+    {
+        "objectid": "make_believe_014",
+        "title": "Advertisement for Dutch Settlement in Montana",
+        "creator": "Great Northern Railway",
+        "date": "1910-10-05",
+        "description": "Advertisement for the Chinook, Montana settlement in a Wisconsin-based Dutch language newspaper.",
+        "subject": "advertising;immigration;farmers (people in agriculture);farming (activity or system);newspapers",
+        "location": "De Pere, WI",
+        "latitude": "44.44884606",
+        "longitude": "-88.05831432",
+        "source": "Delpher",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "nl",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_014_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_014_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_014.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_014.html"
+    },
+    {
+        "objectid": "make_believe_015",
+        "title": "Herman Antonie Van Valkenburg",
+        
+        "date": "1890",
+        "description": "Studio portrait",
+        "subject": "studio portraits;facial hairstyles;facial hairstyles;greatcoats",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "\"Miscellaneous Photos,\" nod., Northwestern and Pacific Hypotheek Bank Records, General Operations (Two or More Companies), Box 11, Folder 9, Eastern Washington State Historical Society (Northwest Museum of Arts and Culture), Spokane, WA. https: //archiveswest.orbiscascade.org/ark: 80444/xv314396.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "nl",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_015_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_015_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_015.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_015.html"
+    },
+    {
+        "objectid": "make_believe_016",
+        "title": "Spokane and the Inland Empire",
+        "creator": "Northern Pacific Railroad",
+        "date": "1900",
+        "description": "Booster pamphlet cover illustration",
+        "subject": "pamphlets;boosterism;natural landscapes;mountains (landforms);railroad logos",
+        "location": "Cheney, WA",
+        "latitude": "47.48707358",
+        "longitude": "-117.5750755",
+        "source": "Inland Automobile Association Records, 1903–1974 (inclusive), 7 cubic ft., SPC 974-0011, Archives & Special Collections, Eastern Washington University Libraries, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_016_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_016_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_016.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_016.html"
+    },
+    {
+        "objectid": "make_believe_017",
+        "title": "View of Cook's Motor Line from Spokane Heights",
+        "creator": "C. Windsor",
+        "date": "1890-04",
+        "description": "Bird's eye Spokane residential area illustration",
+        "subject": "cityscapes (representations);streetcars;hills (landforms);urban areas",
+        "location": "St. Paul, MN",
+        "latitude": "44.95352842",
+        "longitude": "-93.09369854",
+        "source": "Ned M. Barnes Northwest Room, Spokane Public Library",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_017_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_017_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_017.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_017.html"
+    },
+    {
+        "objectid": "make_believe_018",
+        "title": "Phoenix Lumber Company Letterhead",
+        "creator": "Phoenix Lumber Company",
+        "date": "1918-10-03",
+        "description": "Detail from correspondence between the company and the Arcadia Valley Fruit Grower's Association",
+        "subject": "letterheads;commercial correspondence;botanical illustrations;graphic design",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Arcadia Valley Fruit Growers Association Records, 1909-1918. MsSC 115. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_018_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_018_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_018.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_018.html"
+    },
+    {
+        "objectid": "make_believe_019",
+        "title": "Travelling Musicians in Spokane",
+        
+        "date": "1910",
+        "description": "Travelling traditional Dutch musicians photographed in a Spokane residence.",
+        "subject": "photographs;group portraits;brass instruments",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "\"Miscellaneous Photos,\" nod., Northwestern and Pacific Hypotheek Bank Records, General Operations (Two or More Companies), Box 11, Folder 9, Eastern Washington State Historical Society (Northwest Museum of Arts and Culture), Spokane, WA. https: //archiveswest.orbiscascade.org/ark: 80444/xv314396.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_019_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_019_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_019.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_019.html"
+    },
+    {
+        "objectid": "make_believe_020",
+        "title": "Spokane Falls, Below Power Station",
+        "creator": "Lee Morehouse",
+        "date": "1900",
+        "description": "Phoenix Saw Mill on right, Spokane Flour Mills on left.",
+        "subject": "industrial buildings;rapids;brick structures;lumber;sawmills (factories);flour mills",
+        "location": "621 W Mallon Avenue, Spokane, WA",
+        "latitude": "47.66515283",
+        "longitude": "-117.421923",
+        "source": "Series I: Glass Plate Negatives, Box 41, Major Lee Moorhouse Photographs (PH036), Special Collections and University Archives, University of Oregon Libraries, https: //scua.uoregon.edu/repositories/2/resources/3331.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_020_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_020_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_020.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_020.html"
+    },
+    {
+        "objectid": "make_believe_021",
+        "title": "Souvenir Card, Spokane, Washington, 1899",
+        
+        "date": "1899",
+        "description": "Collage of four buildings and the Monroe St. Bridge.",
+        "subject": "collages (visual works);arch bridges;souvenirs",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Postcard Collection, Northwest Room, Spokane Public Library, identifier NWC 20. NW – Washington – Spokane – Buildings (#02)",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_021_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_021_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_021.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_021.html"
+    },
+    {
+        "objectid": "make_believe_022",
+        "title": "Interior Old National Bank",
+        
+        "date": "1910",
+        "description": "Postcard of the Old National Bank interior, featuring two rows of green marble columns.",
+        "subject": "postcards;postcards;green marble;lighting fixtures;bank buildings",
+        "location": "422 W Riverside Ave, Spokane, WA",
+        "latitude": "47.65846588",
+        "longitude": "-117.419144",
+        "source": "Postcard Collection, Northwest Room, Spokane Public Library, identifier NWC 20. NW – Washington – Spokane – Banks – Old National Bank (#04)",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_022_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_022_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_022.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_022.html"
+    },
+    {
+        "objectid": "make_believe_023",
+        "title": "Thomas G. Thomson",
+        
+        "date": "1900",
+        "description": "Studio portrait",
+        "subject": "studio portraits;facial hairstyles;neckties",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "\"Miscellaneous Photos,\" nod., Northwestern and Pacific Hypotheek Bank Records, General Operations (Two or More Companies), Box 11, Folder 9, Eastern Washington State Historical Society (Northwest Museum of Arts and Culture), Spokane, WA. https: //archiveswest.orbiscascade.org/ark: 80444/xv314396.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_023_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_023_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_023.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_023.html"
+    },
+    {
+        "objectid": "make_believe_024",
+        "title": "Nederlanders in Amerika",
+        "creator": "Jacob van Hinte",
+        "date": "1928",
+        "description": "Copyright Page of <em>Nederlanders in Amerika</em>",
+        "subject": "title pages;books;academic dissertations;emigrants;colonies",
+        "location": "Groningen, NL",
+        "latitude": "53.21962018",
+        "longitude": "6.56946985",
+        "source": "Koninklijke Bibliotheek",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "nl",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_024_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_024_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_024.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_024.html"
+    },
+    {
+        "objectid": "make_believe_025",
+        "title": "Northwestern and Pacific Hypotheekbank Correspondence",
+        "creator": "Thomas G. Thomson",
+        "date": "1898",
+        "description": "Correspondence between Thomson and Alfred R. Stratton",
+        "subject": "letters (correspondence);commercial correspondence;insurance;real estate",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "<em>Alfred R. Stratton Papers</em>, 1895–1944. MsSC 140. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture), Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_025_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_025_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_025.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_025.html"
+    },
+    {
+        "objectid": "make_believe_026",
+        "title": "The Monroe Doctrine, 1823",
+        "creator": "Allyn Cox",
+        "date": "1973",
+        "description": "Oil on canvas, Great Experiment Hall, Cox Corridors, Us. Capitol.",
+        "subject": "murals (general, decorations on wall);oil paintings (visual works);terrestrial globes;military uniforms;classicism",
+        "location": "Washington, DC",
+        "latitude": "38.89011424",
+        "longitude": "-77.00814928",
+        "source": "Photograph by Architect of the Capitol, October 12, 2011, https: //www.aoc.gov.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_026_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_026_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_026.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_026.html"
+    },
+    {
+        "objectid": "make_believe_027",
+        "title": "The Pull of the Monroe Magnet",
+        "creator": "Udo Keppler",
+        "date": "1913-08-13",
+        "description": "Political cartoon featured in <em>Puck Magazine</em>.",
+        "subject": "political cartoons;caricatures;magnets;explosions;satire (artistic device)",
+        
+        
+        
+        "source": "Geographicus Rare Antique Maps, https: //www.geographicus.com/P/AntiqueMap/monroemagnet-puck-1913 (accessed June 15, 2024).",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_027_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_027_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_027.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_027.html"
+    },
+    {
+        "objectid": "make_believe_028",
+        "title": "Uncle Sam Sees the Danger",
+        "creator": "\"L.A.D.\"",
+        "date": "1901-02--01",
+        "description": "Political cartoon",
+        "subject": "political cartoons;public schools (institutions);ships",
+        "location": "Tacoma, WA",
+        "latitude": "47.25601169",
+        "longitude": "-122.445065",
+        "source": "Tacoma Public Library Northwest Room, identifier AS021901.png, https: //www.tacomalibrary.org/northwest-room (accessed June 15, 2024).",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_028_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_028_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_028.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_028.html"
+    },
+    {
+        "objectid": "make_believe_029",
+        "title": "Pat Kanim, Snoqualmie Chief",
+        "creator": "George N. Moore",
+        "date": "1855",
+        "description": "Photographic print on cabinet card (copied from an earlier tintype, possibly 1850s), ca. 1855 (printed after 1870).",
+        "subject": "photographs;tintypes (photographs);hats;feathers (animal components)",
+        
+        
+        
+        "source": "Museum of History and Industry, Seattle, SHS1679, accession no. 6888, University of Washington, https: //mohai.org/ (accessed June 15, 2024).",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_029_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_029_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_029.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_029.html"
+    },
+    {
+        "objectid": "make_believe_030",
+        "title": "The \"Sawmill Phoenix\"",
+        
+        "date": "1892",
+        "description": "<em>Phoenix Lumber Company and Sawmill on the riverbank at the foot of Post</em> and Wall Streets.",
+        "subject": "sawmills (factories);industrial sites;lumber;smokestacks;log wagons",
+        "location": "N Post St & W Spokane Falls Blvd, Spokane, WA",
+        "latitude": "47.66050946",
+        "longitude": "-117.4235346",
+        "source": "Oversized Photo Collection, Box 10, #05, Northwest Room, Spokane Public Library.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_030_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_030_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_030.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_030.html"
+    },
+    {
+        "objectid": "make_believe_031",
+        "title": "City of Sunshine and Power Booster Pamphlet",
+        "creator": "Shaw & Borden Company",
+        "date": "1907",
+        "description": "Brochure published by the Spokane company as a celebration of the 18th anniversary of their business with cover illustration engraving work done by the American Engraving Company of Spokane.",
+        "subject": "brochures;promotional materials;engraving (action);illustrations",
+        "location": "609 Riverside Avenue, Spokane, WA",
+        "latitude": "47.65765135",
+        "longitude": "-117.4218746",
+        "source": "Eastern Washington State Historical Society. Ephemera Business Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_031_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_031_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_031.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_031.html"
+    },
+    {
+        "objectid": "make_believe_032",
+        "title": "Main Power of the Spokane River",
+        "creator": "C. Windsor",
+        "date": "1890-01",
+        "description": "Illustration of the Spokane Falls and surrounding businesses.",
+        "subject": "illustrations;rivers;waterfalls (natural bodies of water);bridges;industrial buildings",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Inland Northwest Special Collections, Spokane Public Library, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_032_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_032_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_032.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_032.html"
+    },
+    {
+        "objectid": "make_believe_033",
+        "title": "E. F. Cartier Van Dissel",
+        
+        "date": "1902",
+        "description": "Studio portrait",
+        "subject": "studio portraits;bow ties;facial hairstyles",
+        
+        
+        
+        "source": "New York Public Library, Digital Collections, https: //archive.org/details/menofpacificcoas00sanf (accessed June 15, 2024).",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_033_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_033_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_033.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_033.html"
+    },
+    {
+        "objectid": "make_believe_034",
+        "title": "Article on Dutch Settlement in Springdale",
+        
+        "date": "1913-08-17",
+        "description": "Advertisement for the Springdale, WA settlement in English-language newspaper.",
+        "subject": "advertising;newspapers;real estate;immigration;deforestation;economic development",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "<em>Spokane Chronicle</em> (Spokane, WA), October 17, 1913, p. 8.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_034_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_034_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_034.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_034.html"
+    },
+    {
+        "objectid": "make_believe_035",
+        "title": "Diary Entry",
+        "creator": "Abraham Rutgers Van der Loeff",
+        "date": "1893",
+        "description": "A short story written by the author titled \"Chinese Spiritualism\", featuring a series of racialize illustrations of Chinese caricatures, dragons and devils.",
+        "subject": "diaries;handwriting;caricatures;dragons;marginal illustrations",
+        "location": "Groningen, NL",
+        "latitude": "53.21962018",
+        "longitude": "6.56946985",
+        "source": "A. Rutgers Van der Loeff Diaries, 1893?–1916. MsSC 125. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture), Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "nl",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_035_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_035_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_035.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_035.html"
+    },
+    {
+        "objectid": "make_believe_036",
+        "title": "Spokane Athletic Club",
+        "creator": "Adolph Selige Publishing Company",
+        "date": "1907",
+        "description": "Postcard of the Spokane Athletic Club.",
+        "subject": "postcards;postcards;athletic clubs;arches;windows;flags",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Postcard Collection, Northwest Room, Spokane Public Library, accessed January 24, 2026, https: //lange.spokanelibrary.org/items/show/5185.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_036_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_036_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_036.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_036.html"
+    },
+    {
+        "objectid": "make_believe_037",
+        "title": "First Annual Minstrel Show",
+        "creator": "Spokane Athletic Club",
+        "date": "1913-02-11",
+        "description": "Brochure for event at the Spokane Auditorium Theater",
+        "subject": "brochures;graphic design;entertainment events;advertising",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Marjorie Norman Hawkins Papers, 1913–1968. MsSC 153. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_037_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_037_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_037.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_037.html"
+    },
+    {
+        "objectid": "make_believe_038",
+        "title": "Injured Innocence",
+        "creator": "Centennial Mill Company",
+        "date": "1910",
+        "description": "Trade card advertisement for Centennial Mills Company.",
+        "subject": "trade cards;advertising;printed ephemera;kitchens;furniture;flour mills",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_038_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_038_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_038.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_038.html"
+    },
+    {
+        "objectid": "make_believe_039",
+        "title": "Injured Innocence, Detail",
+        "creator": "Centennial Mill Company",
+        "date": "1910",
+        "description": "Detail of trade card advertisement for Centennial Mills Company.",
+        "subject": "trade cards;advertising;wheatstacks;packaging",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_039_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_039_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_039.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_039.html"
+    },
+    {
+        "objectid": "make_believe_040",
+        "title": "Spokane Falls and Her Natural Resources",
+        "creator": "Northwest Industrial Exposition",
+        "date": "1890",
+        "description": "Map of the natural resources in and around Spokane for the 1890 Northwest Industrial Exposition.",
+        "subject": "maps (documents);townscapes (representations);rivers;mining;agriculture (discipline);industry (economic concept)",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_040_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_040_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_040.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_040.html"
+    },
+    {
+        "objectid": "make_believe_041",
+        "title": "Spokane Falls and Her Natural Resources, Detail",
+        "creator": "Northwest Industrial Exposition",
+        "date": "1890",
+        "description": "Detail of a map of the natural resources in and around Spokane for the 1890 Northwest Industrial Exposition.",
+        "subject": "natural resources;industrial expositions;grids (layout features)",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_041_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_041_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_041.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_041.html"
+    },
+    {
+        "objectid": "make_believe_042",
+        "title": "Northern Light, Lodge No. 70",
+        "creator": "International Order of Good Templars",
+        "date": "1905",
+        "description": "Ribbon from the organization.",
+        "subject": "insignia ribbons;banners;processional banners",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Sutton Family Papers, ca. 1884- ca. 1910. MsSC 131. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_042_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_042_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_042.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_042.html"
+    },
+    {
+        "objectid": "make_believe_043",
+        "title": "Spokane -- Parades (#07)",
+        "creator": "Thomas White Tolman",
+        "date": "1905-08-25",
+        "description": "Procession of Masonic Blue Lodges to new Temple on Riverside Avenue at dedication.",
+        "subject": "processions;Ionic columns;bicycles;outbuildings",
+        "location": "1110 W Riverside Ave, Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Spokane Public Library, accessed January 24, 2026, https: //lange.spokanelibrary.org/items/show/2810.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_043_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_043_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_043.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_043.html"
+    },
+    {
+        "objectid": "make_believe_044",
+        "title": "Damon and Pythias Illustration",
+        "creator": "Knights of Pythias, Western Star Division, No. 7",
+        "date": "1894-01-03",
+        "description": "Depiction of the characters Damon and Pythias beneath a banner with the letters FCB, standing for friendship, charity and benevolence.",
+        "subject": "figures (illustrations);banners;armor",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Sutton Family Papers, ca. 1884- ca. 1910. MsSC 131. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_044_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_044_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_044.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_044.html"
+    },
+    {
+        "objectid": "make_believe_045",
+        "title": "Charles Woodruff Clarke",
+        "creator": "The Fraternal Identification Co. of America",
+        "date": "1907-08-21",
+        "description": "Fraternal Identification Card.",
+        "subject": "certificates;printed materials (object genre);signatures (names)",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Charles Woodruff Clarke Papers, 1866-1933. Ms 27. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_045_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_045_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_045.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_045.html"
+    },
+    {
+        "objectid": "make_believe_046",
+        "title": "Shriner Cecil Walwrath",
+        "creator": "Richards Photography Studio",
+        "date": "1945",
+        "description": "Kodachrome stereoscopic images of Shriner Cecil Walwrath in brown face makeup and pseudo-Middle Eastern dress.",
+        "subject": "stereoscopic photography;Kodachrome (TM);photographs;performance costumes;cultural appropriation",
+        "location": "Tacoma, WA",
+        "latitude": "47.25601169",
+        "longitude": "-122.445065",
+        "source": "Northwest Room, Spokane Public Library",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_046_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_046_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_046.gif",
+        "reference_url": "/make_believe_public/items/make_believe_046.html"
+    },
+    {
+        "objectid": "make_believe_047",
+        "title": "Sixteen Factories in One",
+        "creator": "The Henderson-Ames Company",
+        "date": "1900",
+        "description": "Back cover of the company's catalogue with illustrations of the facilities from various angles.",
+        "subject": "marginal illustrations;manufactories;industrial buildings;smokestacks;rail transportation equipment",
+        "location": "Kalamazoo, MI",
+        "latitude": "42.29157856",
+        "longitude": "-85.5878968",
+        "source": "Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_047_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_047_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_047.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_047.html"
+    },
+    {
+        "objectid": "make_believe_048",
+        "title": "Miller-Dervant Business Card",
+        "creator": "The Miller-Dervant Company",
+        "date": "1905",
+        "description": "Ornate engraved business card for the Spokane-based costumers and wig designers.",
+        "subject": "business cards;engraving (action);graphic design;floral patterns;typography;advertising",
+        "location": "124 Post Street, Spokane, WA",
+        "latitude": "47.65624296",
+        "longitude": "-117.423533",
+        "source": "Miller-Dervant Company Records, 1896-1955. MsSC 198. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_048_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_048_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_048.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_048.html"
+    },
+    {
+        "objectid": "make_believe_049",
+        "title": "Gentleman's Costumes",
+        "creator": "The Miller-Dervant Company",
+        "date": "1906",
+        "description": "Sample of costumes available, including Uncle Sam, Negro Minstrel and Polar Bear.",
+        "subject": "performance costumes;costumes (character dress);figures (illustrations)",
+        "location": "124 Post Street, Spokane, WA",
+        "latitude": "47.65624296",
+        "longitude": "-117.423533",
+        "source": "Miller-Dervant Company Records, 1896-1955. MsSC 198. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_049_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_049_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_049.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_049.html"
+    },
+    {
+        "objectid": "make_believe_050",
+        "title": "We Contract to Makeup and Costume Plays",
+        "creator": "The Miller-Dervant Company",
+        "date": "1906",
+        "description": "Back cover illustration of the 1906 Miller-Dervant costume catalogue.",
+        "subject": "costumes (character dress);illustrations;trade catalogs;advertising;costumes (character dress)",
+        "location": "124 Post Street, Spokane, WA",
+        "latitude": "47.65624296",
+        "longitude": "-117.423533",
+        "source": "Miller-Dervant Company Records, 1896-1955. MsSC 198. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_050_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_050_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_050.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_050.html"
+    },
+    {
+        "objectid": "make_believe_051",
+        "title": "The Dance of the Dutch",
+        "creator": "E.T. Hawk",
+        "date": "1913",
+        "description": "Photo that may be documenting an event from the 1913 Spokane Pow Wow, taken from the bleachers of Glover Field, then known as The Stadium, looking out onto the Monroe Bridge and Spokane River.",
+        "subject": "photographs;parades;spectators (event observers);arch bridges;bleachers;rivers",
+        "location": "Glover Field, Spokane, WA",
+        "latitude": "47.65979743",
+        "longitude": "-117.431453",
+        "source": "E.T. Hawk Photograph Collection. SPC-023-0996. Item SPC-023-0996_02_266. Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_051_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_051_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_051.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_051.html"
+    },
+    {
+        "objectid": "make_believe_052",
+        "title": "The Dance of the Dutch, Detail",
+        "creator": "E.T. Hawk",
+        "date": "1913",
+        "description": "Detail of photograph that may be documenting an event from the 1913 Spokane Pow Wow.",
+        "subject": "photographs;children's clothing;musical performances;hats;stripes",
+        "location": "Glover Field, Spokane, WA",
+        "latitude": "47.65979743",
+        "longitude": "-117.431453",
+        "source": "E.T. Hawk Photograph Collection. SPC-023-0996. Item SPC-023-0996_02_266. Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_052_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_052_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_052.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_052.html"
+    },
+    {
+        "objectid": "make_believe_053",
+        "title": "Songs as Sung at the Dutch Mill",
+        "creator": "Coeur d'Alene Hotel",
+        "date": "1940",
+        "description": "Cover of the song folder for the Dutch Mill.",
+        "subject": "songbooks;sheet music;musical instruments;accordions;trumpets;guitars",
+        "location": "232 N Howard St, Spokane, WA",
+        "latitude": "47.66003752",
+        "longitude": "-117.4208342",
+        "source": "Jerome Peltier Archive of Spokane Area History, 1934-2004. MsSC 5753. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng;de",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_053_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_053_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_053.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_053.html"
+    },
+    {
+        "objectid": "make_believe_054",
+        "title": "Business Card",
+        "creator": "Holland Advertising Company",
+        "date": "1910",
+        "description": "Business card featuring an illustration of a young woman in pigtails in front of a windmill.",
+        "subject": "business cards;windmills;advertising;commercial art;typography",
+        "location": "717 W Main Avenue, Spokane, WA",
+        "latitude": "47.6590355",
+        "longitude": "-117.4227972",
+        "source": "Spokane Flour Mill Records, 1903–1948. Ms 3. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_054_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_054_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_054.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_054.html"
+    },
+    {
+        "objectid": "make_believe_055",
+        "title": "Advertisement",
+        "creator": "Flyer Flexible",
+        "date": "1894-01-03",
+        "description": "Advertisement featuring a caricature of a German-American.",
+        "subject": "advertising;advertising;caricatures",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Sutton Family Papers, ca. 1884- ca. 1910. MsSC 131. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_055_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_055_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_055.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_055.html"
+    },
+    {
+        "objectid": "make_believe_056",
+        "title": "SS Great Northern",
+        "creator": "Kiser Photo Company",
+        "date": "1915-03-15",
+        "description": "Great Northern Railway steamship on the Columbia River near Flavel, Oregon.",
+        "subject": "steamships;flags;boats;rivers",
+        "location": "Flavel, Oregon (historical)",
+        "latitude": "46.19014109",
+        "longitude": "-123.928846",
+        "source": "5.8 × 9.1 in., Org. Lot 78, Box 6, Folder 7, Item 003, Oregon Historical Society Library, Portland, OR.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_056_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_056_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_056.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_056.html"
+    },
+    {
+        "objectid": "make_believe_057",
+        "title": "Oriental Baths and Laundry",
+        "creator": "Ryosuke Akashi",
+        "date": "1913",
+        "description": "Photograph of Spokane storefront.",
+        "subject": "photographs;storefronts;bathhouses (water recreation structures);laundries (businesses);signage;portraits",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Joel E. Ferris Research Archives, Northwest Museum of Arts and Culture (Eastern Washington State Historical Society), Spokane, WA, accessed January 24, 2026, https: //lange.spokanelibrary.org/items/show/5985.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng;ja",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_057_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_057_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_057.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_057.html"
+    },
+    {
+        "objectid": "make_believe_058",
+        "title": "Spokane Parade Scene",
+        "creator": "E.T. Hawk",
+        "date": "1913",
+        "description": "\"Chinese themed parade participants on\r\nRiverside Avenue\"",
+        "subject": "parades;street scenes;banners;paper lanterns;spectators (event observers);umbrellas",
+        "location": "914 W Riverside Ave, Spokane, WA",
+        "latitude": "47.6581197",
+        "longitude": "-117.4261855",
+        "source": "E.T. Hawk Photograph Collection. SPC-023-0996. Item SPC-023-0996_03_407. Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_058_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_058_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_058.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_058.html"
+    },
+    {
+        "objectid": "make_believe_059",
+        "title": "Tai Chi Company Flour Sack",
+        "creator": "Spokane Flour Mills",
+        "date": "1910",
+        "description": "Spokane Flour Mills wholesale flour design for trade in Chinese markets.",
+        "subject": "packaging;fabricators;trademarks",
+        
+        
+        
+        "source": "Eastern Washington State Historical Society. Artifacts Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_059_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_059_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_059.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_059.html"
+    },
+    {
+        "objectid": "make_believe_060",
+        "title": "Pato Brand Flour Sack",
+        "creator": "Spokane Flour Mills",
+        "date": "1910",
+        "description": "Spokane Flour Mills wholesale flour design for trade in Filipino markets.",
+        "subject": "packaging;cloth;advertising;advertising",
+        
+        
+        
+        "source": "Eastern Washington State Historical Society. Artifacts Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_060_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_060_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_060.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_060.html"
+    },
+    {
+        "objectid": "make_believe_061",
+        "title": "Orchard Brand Flour Sack",
+        "creator": "Spokane Flour Mills",
+        "date": "1910",
+        "description": "Spokane Flour Mills wholesale flour design for trade in Chinese markets.",
+        "subject": "textiles (visual works);trademarks;Chinese characters (writing system);flowers (plant components)",
+        
+        
+        
+        "source": "Eastern Washington State Historical Society. Artifacts Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng;zh",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_061_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_061_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_061.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_061.html"
+    },
+    {
+        "objectid": "make_believe_062",
+        "title": "Raymond E. Bigelow Leading the Pow Wow",
+        "creator": "E.T. Hawk",
+        "date": "1913",
+        "description": "Director of the Spokane Ad Club Raymond E. Bigelow leading the Pow Wow Celebration in brown face make up and Indigenous dress as \"Big Chief I\".",
+        "subject": "parades;celebrations;costumes (character dress);headdresses;street scenes;banners",
+        
+        
+        
+        "source": "E.T. Hawk Photograph Collection. SPC-023-0996. Item SPC-023-0996_03_378. Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_062_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_062_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_062.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_062.html"
+    },
+    {
+        "objectid": "make_believe_063",
+        "title": "Miss Spokane and Queen Caroline Testout",
+        "creator": "Spokane Ad Club",
+        "date": "1913",
+        "description": "Marguerite Motie as Miss Spokane and four year-old Mildred Tucker as Queen Caroline Testout.",
+        "subject": "postcards;day dresses;roses (flowers);headbands (headgear);sashes (costume accessories)",
+        
+        
+        
+        "source": "Postcard Collection, Northwest Room, Spokane Public Library, accessed January 24, 2026, https: //lange.spokanelibrary.org/items/show/5261.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_063_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_063_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_063.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_063.html"
+    },
+    {
+        "objectid": "make_believe_064",
+        "title": "The American Wonderland",
+        "creator": "Spokane Chamber of Commerce",
+        "date": "1910",
+        "description": "Illustration of Marguerite Motie as Miss Spokane above a map of the Pacific Northwest.",
+        "subject": "illustrations;promotional materials;maps (documents)",
+        
+        
+        
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_064_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_064_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_064.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_064.html"
+    },
+    {
+        "objectid": "make_believe_065",
+        "title": "Big Chief I Bids You Be Merry",
+        "creator": "Spokane Ad Club;Spokane Chamber of Commerce",
+        "date": "1913",
+        "description": "Introduction to the program, featuring Raymond E. Bigelow, Marguerite Motie as Miss Spokane and Spokane irrigation leader Fm. March.",
+        "subject": "posters;Native American regalia;headdresses;advertising",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_065_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_065_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_065.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_065.html"
+    },
+    {
+        "objectid": "make_believe_066",
+        "title": "Frontier Recreation Scene in Parade",
+        "creator": "Charles A. (Charles August) Libby",
+        "date": "1936-08",
+        "description": "Parade showing wagons, streetcars and buses.",
+        "subject": "parades;streetcars;buses;cityscapes (representations);awnings",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Northwest Room, Spokane Public Library, accessed January 24, 2026, https: //lange.spokanelibrary.org/items/show/2808.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_066_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_066_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_066.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_066.html"
+    },
+    {
+        "objectid": "make_believe_067",
+        "title": "Lunette Decorations in the Old National Bank",
+        
+        "date": "1908-09",
+        "description": "Lunette decorations and interior view of bank building, designed by architect All. Rand.",
+        "subject": "lunettes (wall components);arches;statues;interior design",
+        "location": "422 W Riverside Ave, Spokane, WA",
+        "latitude": "47.65846588",
+        "longitude": "-117.419144",
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_067_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_067_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_067.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_067.html"
+    },
+    {
+        "objectid": "make_believe_068",
+        "title": "Lunette Decorations in the Old National Bank, Detail",
+        
+        "date": "1908-09",
+        "description": "Lunette decorations and interior view of bank building, designed by architect All. Rand.",
+        "subject": "lunettes (wall components);arches;murals (general, decorations on wall)",
+        "location": "422 W Riverside Ave, Spokane, WA",
+        "latitude": "47.65846588",
+        "longitude": "-117.419144",
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_068_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_068_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_068.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_068.html"
+    },
+    {
+        "objectid": "make_believe_069",
+        "title": "New Year's Greetings",
+        "creator": "Fred C. Brisley",
+        "date": "1892-01",
+        "description": "Cover illustration for the Annual Illustrated Spokane Spokesman.",
+        "subject": "plates (illustrations);annuals (publications);cityscapes (representations);medallions (ornament areas)",
+        "location": "Minneapolis, MN",
+        "latitude": "44.97794162",
+        "longitude": "-93.25715648",
+        "source": "Inland Northwest Special Collections, Spokane Public Library, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_069_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_069_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_069.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_069.html"
+    },
+    {
+        "objectid": "make_believe_070",
+        "title": "Studio Portrait with Classical Iconography",
+        "creator": "Samuel D. Owings Studio",
+        "date": "1910",
+        "description": "Example of studio portraiture in Spokane with unknown model.",
+        "subject": "studio portraits;guitars;pedestals;flowers (plant components);day dresses",
+        "location": "816 Riverside Avenue, Spokane, WA",
+        "latitude": "47.65851548",
+        "longitude": "-117.4243232",
+        "source": "Sutton Family Papers, ca. 1884- ca. 1910. MsSC 131. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_070_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_070_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_070.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_070.html"
+    },
+    {
+        "objectid": "make_believe_071",
+        "title": "Studio Portrait with Classical Iconography, Detail",
+        "creator": "Samuel D. Owings Studio",
+        "date": "1910",
+        "description": "Detail of studio portraiture in Spokane highlighting horsehair mats imitating grass within a controlled studio space.",
+        "subject": "portraits;horsehair;rock carvings",
+        "location": "816 Riverside Avenue, Spokane, WA",
+        "latitude": "47.65851548",
+        "longitude": "-117.4243232",
+        "source": "Sutton Family Papers, ca. 1884- ca. 1910. MsSC 131. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_071_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_071_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_071.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_071.html"
+    },
+    {
+        "objectid": "make_believe_072",
+        "title": "Marie Antoinettes",
+        "creator": "E.T. Hawk",
+        "date": "1910",
+        "description": "Scattered group of parade participants wearing French Noblewomen costumes on Riverside Avenue.",
+        "subject": "photographs;parades;costumes (character dress);street scenes;hats",
+        "location": "811 W Riverside Avenue, Spokane, WA",
+        "latitude": "47.6577859",
+        "longitude": "-117.4244858",
+        "source": "E.T. Hawk Photograph Collection. SPC-023-0996. Item SPC-023-0996_02_348. Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_072_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_072_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_072.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_072.html"
+    },
+    {
+        "objectid": "make_believe_073",
+        "title": "Library with Classical Iconography",
+        "creator": "Hyslop and Westcot Architects",
+        "date": "1911",
+        "description": "Interior of residential library in an issue of the Inland Empire Architect magazine.",
+        "subject": "fireplaces;Doric columns;Ionic columns;bookshelves;armchairs",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Inland Empire Architect Collection, Eastern Washington State Historical Society, Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_073_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_073_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_073.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_073.html"
+    },
+    {
+        "objectid": "make_believe_074",
+        "title": "Green Velvet Effect Wallpaper",
+        "creator": "John W. Graham & Co.",
+        "date": "1910",
+        "description": "Illustration from <em>Wall Papers; Artistic Wall Hangings</em>, nod.",
+        "subject": "wallpapers;plates (illustrations);fireplaces;vases;interior design",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "<em>Andrew T. Amos Papers</em>, 1904–1911, MsSC 11, Eastern Washington State Historical Society, Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_074_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_074_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_074.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_074.html"
+    },
+    {
+        "objectid": "make_believe_075",
+        "title": "Circus Room Mural",
+        
+        "date": "1935",
+        "description": "Louis Davenport and Abraham Rutgers Van der Loeff in the \"Circus Room\".",
+        "subject": "murals (general, decorations on wall);ladders;horses",
+        "location": "10 S Post St, Spokane, WA 99201",
+        "latitude": "47.6570422",
+        "longitude": "-117.4240403",
+        "source": "Northwest Room, Spokane Public Library, accessed January 24, 2026, https: //lange.spokanelibrary.org/items/show/2726.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_075_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_075_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_075.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_075.html"
+    },
+    {
+        "objectid": "make_believe_076",
+        "title": "Sign of the Calling",
+        "creator": "Abraham Rutgers Van der Loeff",
+        "date": "1935",
+        "description": "Detail of the Circus Room Mural by Abraham Rutgers Van der Loeff depicting a man presenting a Masonic hand gesture behind his back and a young man nearby mimicking the sign.",
+        "subject": "murals (general, decorations on wall);gesture;symbolism (artistic concept)",
+        "location": "10 S Post St, Spokane, WA 99201",
+        "latitude": "47.6570422",
+        "longitude": "-117.4240403",
+        "source": "Tornado Creek Publications",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_076_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_076_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_076.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_076.html"
+    },
+    {
+        "objectid": "make_believe_077",
+        "title": "Valley View Addition",
+        "creator": "H.M. Adams",
+        "date": "1915",
+        "description": "Promotional booster map for an irrigated addition of logged-over farmland outside of Spokane.",
+        "subject": "promotional materials;real estate;real estate development;irrigation systems;transportation infrastructure",
+        "location": "Liberty Lake, WA",
+        "latitude": "47.67465247",
+        "longitude": "-117.1114369",
+        "source": "Charles Woodruff Clarke Papers, 1866-1933. Ms 27. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_077_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_077_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_077.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_077.html"
+    },
+    {
+        "objectid": "make_believe_078",
+        "title": "Spokane Commission Dinner",
+        "creator": "Frank H. Nowell",
+        "date": "1909-05",
+        "description": "Dinner held in the Education Building during the Alaska Yukon Pacific Exposition in Seattle. E.F. Cartier Van Dissel seated in the foreground at the right.",
+        "subject": "dinners;fair buildings;industrial expositions",
+        "location": "W Stevens Wy NE, Seattle, WA",
+        "latitude": "47.65229487",
+        "longitude": "-122.306686",
+        "source": "University of Washington Libraries, Special Collections, [AYP373]. Accessed August 17, 2025. https: //digitalcollections.lib.washington.edu/digital/collection/ayp/id/466.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_078_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_078_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_078.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_078.html"
+    },
+    {
+        "objectid": "make_believe_079",
+        "title": "Exposition of Apples",
+        "creator": "National Apple Show, Incorporated",
+        "date": "1908-11-28",
+        "description": "Letterhead detail from the National Apple Show, noting Elf. Cartier Van Dissel (Phoenix Sawmill and Lumber Company), Henry M. Richards (Washington Water Power Company) and Lois W. Hill (Great Northern Railway) as associates.",
+        "subject": "letterheads;art exhibitions;advertising;fruit",
+        "location": "202 W 2nd Ave, Spokane, WA",
+        "latitude": "47.65527324",
+        "longitude": "-117.4154851",
+        "source": "Spokane Flour Mill Records, 1903–1948. Ms 3. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_079_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_079_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_079.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_079.html"
+    },
+    {
+        "objectid": "make_believe_080",
+        "title": "The Arrival in Spokane",
+        "creator": "William C. Morris",
+        "date": "1911-11-23",
+        "description": "Cartoon depicting the arrival of the apple caricatures in Spokane in front of the Old Armory Building.",
+        "subject": "editorial cartoons;cartoons (humorous images);caricatures;fair buildings;flags",
+        "location": "202 W 2nd Ave, Spokane, WA",
+        "latitude": "47.65527324",
+        "longitude": "-117.4154851",
+        "source": "Adam H. Irving Papers, 1905-1943. MsSC 141. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_080_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_080_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_080.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_080.html"
+    },
+    {
+        "objectid": "make_believe_081",
+        "title": "Termination of Tenancy",
+        "creator": "Northwestern and Pacific Hypotheekbank",
+        "date": "1933-12-05",
+        "description": "Notice issued from the bank to the Miller-Dervant costume company.",
+        "subject": "legal notices;legal documents;real estate;commercial buildings",
+        "location": "209-211 Post Street, Spokane, WA",
+        "latitude": "47.65398154",
+        "longitude": "-117.4232802",
+        "source": "Miller-Dervant Company Records, 1896-1955. MsSC 198. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_081_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_081_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_081.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_081.html"
+    },
+    {
+        "objectid": "make_believe_082",
+        "title": "Phoenix Lumber Company Float",
+        "creator": "H.W. Wilkes",
+        "date": "1910",
+        "description": "Horse-drawn parade float on a dirt road.",
+        "subject": "parades;horse-drawn vehicles;banners;flags;lumber",
+        "location": "Medical Lake, WA",
+        "latitude": "47.57269698",
+        "longitude": "-117.6851006",
+        "source": "Medical Lake Heritage Collection, Medical Lake Historical Society, Washington Rural Heritage, https: //washingtonruralheritage.org/cdm/ref/collection/medicallake/id/1 (accessed June 15, 2024).",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_082_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_082_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_082.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_082.html"
+    },
+    {
+        "objectid": "make_believe_083",
+        "title": "A. R. Van der Loeff Show Cards",
+        "creator": "Abraham Rutgers Van der Loeff",
+        "date": "1910-04-19",
+        "description": "Letterhead illustration for the commercial artist from an invoice directed to Spokane Flour Mills.",
+        "subject": "letterheads;commercial art;windmills;invoices",
+        "location": "216-298 S Post St., Spokane, WA",
+        "latitude": "47.65391603",
+        "longitude": "-117.4234361",
+        "source": "Spokane Flour Mill Records, 1903–1948. Ms 3. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_083_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_083_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_083.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_083.html"
+    },
+    {
+        "objectid": "make_believe_084",
+        "title": "Dutch Colonial Interests",
+        "creator": "Arbuckle Brothers",
+        "date": "1890",
+        "description": "Series of illustrations depicting Dutch colonial interests from <em><em>Arbuckles' Illustrated Atlas of Fifty Principal Nations of The World</em</em>.",
+        "subject": "plates (illustrations);colonialism;maps;plantations;harvesting;sailing vessels",
+        
+        
+        
+        "source": "David Rumsey Historical Map Collection",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_084_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_084_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_084.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_084.html"
+    },
+    {
+        "objectid": "make_believe_085",
+        "title": "Born Before the Fire",
+        "creator": "E.T. Hawk",
+        "date": "1910",
+        "description": "Two women riding in the back of an automobile in a parade line, flying a banner reading \"Native Daughters of Spokane. Born Before the Fire.\"",
+        "subject": "parades;open automobiles;banners;umbrellas;hats;awnings",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "E.T. Hawk Photograph Collection. SPC-023-0996. Item SPC-023-0996_03_414. Eastern Washington University Archives, John F. Kennedy Memorial Library, Cheney, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_085_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_085_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_085.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_085.html"
+    },
+    {
+        "objectid": "make_believe_086",
+        "title": "Colville, Washington",
+        
+        "date": "1900",
+        "description": "Small, sparsely populated city center of Colville, WA.",
+        "subject": "cityscapes (representations);main streets;street scenes;horse-drawn vehicles;utility poles;hills (landforms)",
+        "location": "Colville, WA",
+        "latitude": "48.54493786",
+        "longitude": "-117.9022105",
+        "source": "Spokane Public Library, accessed February 26, 2026, https: //lange.spokanelibrary.org/items/show/4636",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_086_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_086_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_086.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_086.html"
+    },
+    {
+        "objectid": "make_believe_087",
+        "title": "Bound for Wineland",
+        
+        "date": "1895-04-17",
+        "description": "Charles Evans as Leif Eriksson in “<em>Bound for Wineland</em>” parade.",
+        "subject": "parades;life floats;performance costumes;boats;spectators (event observers)",
+        "location": "Tacoma, WA",
+        "latitude": "47.25601169",
+        "longitude": "-122.445065",
+        "source": "TPL-4135, Northwest Room, Spokane Public Library.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_087_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_087_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_087.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_087.html"
+    },
+    {
+        "objectid": "make_believe_088",
+        "title": "Birds Eye View of Spokane",
+        "creator": "Carl Dahlgren",
+        "date": "1880",
+        "description": "Illustration of Spokane created in the early 1880s.",
+        "subject": "illustrations;urban landscapes;valleys (landforms);roads",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_088_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_088_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_088.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_088.html"
+    },
+    {
+        "objectid": "make_believe_089",
+        "title": "Birds Eye View of Spokane, Detail",
+        "creator": "Carl Dahlgren",
+        "date": "1880",
+        "description": "Detail of illustration, revealing the artist beside two figures wearing top hats.",
+        "subject": "figures (illustrations);urban landscapes;top hats (hats);umbrellas;easels;cityscapes (representations)",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Eastern Washington State Historical Society. Ephemera Collection. Northwest Museum of Arts and Culture, Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_089_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_089_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_089.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_089.html"
+    },
+    {
+        "objectid": "make_believe_090",
+        "title": "Made in Spokane",
+        "creator": "The 150,000 Club",
+        "date": "1908-03-31",
+        "description": "Letterhead logo for the 1500, 000 Club from an invoice issued to the Spokane Flour Mills.",
+        "subject": "logos;letterheads;emblems (symbols);triangles (polygons);typography",
+        "location": "Spokane, WA",
+        "latitude": "47.65849572",
+        "longitude": "-117.4203818",
+        "source": "Spokane Flour Mill Records, 1903–1948. Ms 3. Eastern Washington State Historical Society (Northwest Museum of Arts and Culture). Spokane, WA.",
+        
+        "type": "Image;StillImage",
+        "format": "image/jpeg",
+        "language": "eng",
+        
+        "rightsstatement": "http://rightsstatements.org/vocab/NoC-US/1.0/",
+        "display_template": "image",
+        "image_thumb": "http://localhost:4000/make_believe_public/objects/thumbs/make_believe_090_th.jpg",
+        "image_small": "http://localhost:4000/make_believe_public/objects/small/make_believe_090_sm.jpg",
+        "object_location": "http://localhost:4000/make_believe_public/objects/make_believe_090.jpg",
+        "reference_url": "/make_believe_public/items/make_believe_090.html"
+    }
+    
+] }

@@ -1,0 +1,331 @@
+---
+# "Image Citations" page layout
+# Mirrors the bibliography layout structure but pulls image_citation fields
+# from whatever CSV is designated as `metadata` in _config.yml, filtered to
+# only items that have a non-empty image_citation value.
+layout: default
+---
+{% include essay/header-scrollytelling.html %}
+
+{% if page.about-featured-image or page.heading or page.sub-heading %}
+{% assign jumboId = page.about-featured-image %}
+{% if jumboId contains '/' %}
+{% assign jumboSrc = jumboId | relative_url %}
+{% else %}
+{% assign jumboItem = site.data[site.metadata] | where: "objectid", jumboId | first %}
+{% capture jumboSrc %}{{ jumboItem.object_location | default: jumboItem.image_small | relative_url }}{% endcapture %}
+{%- endif -%}
+<style>
+    #about-feature {
+        padding: 4rem 0;
+        margin-bottom: 1rem;
+        margin-left: 14%; /* Offset by TOC sidebar width */
+        {% if page.about-featured-image %}
+        background-color: #e9ecef;
+        background-image: url({{ jumboSrc }});
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: {{ page.position | default: 'center' }};{% endif %}
+    }
+    {% if page.padding %}
+    .about-title-box {
+        padding-top: {{ page.padding }};
+        padding-bottom: 1em;
+    }
+    {%- endif -%}
+    .about-title {
+        padding-left: 15% !important;
+    }
+    @media screen and (max-width: 576px) {
+        .about-title-box {
+            padding-top: min({{ page.padding }}, 45vh);
+        }
+        .about-title {
+            padding-left: 1rem !important;
+        }
+    }
+</style>
+<div id="about-feature">
+    <div class="about-title-box">
+        {% if page.heading or page.sub-heading %}
+        <div class="p-2 text-start text-white bg-dark bg-opacity-75 about-title">
+            {% if page.heading %}<h2 class="display-1">{{ page.heading }}</h2>{% endif %}
+            {% if page.sub-heading %}<h3 class="about-tagline h5">{{ page.sub-heading }}</h3>{% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<link rel="stylesheet" href="{{ '/assets/css/scrolly.css' | relative_url }}">
+
+<style>
+    /* ── Light-mode overrides for the scrolly TOC sidebar ── */
+    #bib-toc-sidebar.scrolly-toc-sidebar {
+        background-color: #ffffff;
+        scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+    }
+    #bib-toc-sidebar.scrolly-toc-sidebar::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.15);
+    }
+    #bib-toc-sidebar .scrolly-toc-heading {
+        color: #000000;
+    }
+    #bib-toc-sidebar .scrolly-toc-link {
+        color: #353535;
+    }
+    #bib-toc-sidebar .scrolly-toc-link:hover {
+        color: #1B1B1B;
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    #bib-toc-sidebar .scrolly-toc-link.toc-active {
+        color: #000000;
+        font-weight: 600;
+    }
+    #bib-toc-sidebar .toc-chapter-entry > .scrolly-toc-link {
+        color: #353535;
+    }
+    #bib-toc-sidebar .toc-chapter-entry > .scrolly-toc-link:hover {
+        color: #1B1B1B;
+    }
+    #bib-toc-sidebar .toc-chapter-entry > .scrolly-toc-link.toc-active {
+        color: #000000;
+    }
+    #bib-toc-sidebar .toc-section-rule {
+        background-color: rgba(0, 0, 0, 0.22);
+    }
+    #bib-toc-sidebar .toc-section-rule:hover {
+        background-color: rgba(0, 0, 0, 0.55);
+    }
+    #bib-toc-sidebar .toc-section-rule.toc-section-active {
+        background-color: rgba(0, 0, 0, 0.48);
+    }
+
+    /* ── Main content area: offset right to clear the fixed TOC sidebar ── */
+    #about-wrapper {
+        margin-left: 14%;
+        padding-top: 120px;
+        padding-bottom: 6rem;
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    @media screen and (max-width: 992px) {
+        #bib-toc-sidebar {
+            display: none !important;
+        }
+        #about-wrapper,
+        #about-feature {
+            margin-left: 0 !important;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        #about-wrapper {
+            padding-top: 100px;
+            padding-bottom: 5rem;
+        }
+    }
+
+    /* ── Image citation list ───────────────────────────────────────────── */
+    #image-citation-list {
+        list-style: none;
+        padding-left: 0;
+        max-width: 100%;
+    }
+    #image-citation-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 0.75em;
+        line-height: 1.6;
+        min-width: 0;
+        max-width: 100%;
+        scroll-margin-top: 140px;
+    }
+
+    /* Thumbnail column */
+    .img-cite-thumb-col {
+        flex: 0 0 60px;
+        display: flex;
+        align-items: flex-start;
+        padding-top: 0.1em;
+    }
+    .img-cite-thumb {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 3px;
+        display: block;
+        opacity: 0.85;
+        transition: opacity 0.2s ease;
+    }
+    .img-cite-thumb:hover {
+        opacity: 1;
+    }
+
+    /* Citation text column — hanging indent */
+    .img-cite-text {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding-left: 2em;
+        text-indent: -2em;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        font-size: clamp(0.92rem, 1.15vw, 1.05rem);
+        color: rgba(17, 17, 17, 0.65);
+        line-height: 2;
+    }
+
+    /* "View Item" link column */
+    .img-cite-link-col {
+        flex: 0 0 5.5rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 0.1em;
+    }
+    .img-cite-link {
+        font-size: 0.85em;
+        color: #2563eb;
+        text-decoration: none;
+        border: 1px solid #2563eb;
+        border-radius: 3px;
+        padding: 0 0.4em;
+        line-height: 1.5;
+        white-space: nowrap;
+        transition: color 0.15s ease, background-color 0.15s ease;
+    }
+    .img-cite-link:hover {
+        color: #fff;
+        background-color: #2563eb;
+        text-decoration: none;
+    }
+
+    /* Highlight when jumping directly to an entry via anchor */
+    #image-citation-list li:target {
+        background-color: rgba(255, 220, 100, 0.15);
+        border-left: 3px solid rgba(255, 220, 100, 0.6);
+        padding-left: 0;
+        border-radius: 2px;
+        transition: background-color 0.3s ease;
+    }
+    #image-citation-list li:target .img-cite-text {
+        padding-left: calc(2em - 3px);
+    }
+
+    @media screen and (max-width: 576px) {
+        .img-cite-thumb-col {
+            flex: 0 0 44px;
+        }
+        .img-cite-thumb {
+            width: 44px;
+            height: 44px;
+        }
+        .img-cite-link-col {
+            flex: 0 0 auto;
+        }
+    }
+</style>
+
+<!-- ── TOC SIDEBAR ───────────────────────────────────────────────────────── -->
+<aside class="scrolly-toc-sidebar" id="bib-toc-sidebar" aria-label="Table of contents">
+    <p class="scrolly-toc-heading">Contents</p>
+    <ul class="scrolly-toc-list" id="scrolly-toc-list">
+
+    <li>
+        <a href="{{ '/' | relative_url }}" class="scrolly-toc-link">Home</a>
+    </li>
+
+        {% assign toc_all = site.essay | sort: 'order' %}
+        {% for essay in toc_all %}
+        {% unless essay.layout == 'inter_vis' %}
+            {% assign prev_order = essay.order | minus: 1 %}
+            {% assign preceding  = toc_all | where: "order", prev_order | first %}
+            {% if preceding.layout == 'inter_vis' %}
+            {% assign nav_url = preceding.url %}
+            {% else %}
+            {% assign nav_url = essay.url %}
+            {% endif %}
+            <li class="toc-chapter-entry">
+            <a href="{{ nav_url | prepend: site.baseurl }}"
+                class="scrolly-toc-link"
+                data-toc-chapter="{{ essay.order }}">
+                {% if essay.chap_number %}{{ essay.chap_number }}. {% endif %}{{ essay.title }}
+            </a>
+            </li>
+        {% endunless %}
+        {% endfor %}
+
+        <hr class="toc-divider">
+
+        {% for nav in site.data.config-nav %}
+            {% unless nav.stub == "/" or nav.stub contains "/essay/" %}
+        <li>
+            <a href="{{ nav.stub | relative_url }}"
+            class="scrolly-toc-link {% if nav.stub == page.url %}toc-active{% endif %}">
+                {{ nav.display_name }}
+            </a>
+        </li>
+            {% endunless %}
+        {% endfor %}
+
+    </ul>
+</aside>
+
+<!-- ── MAIN CONTENT ──────────────────────────────────────────────────────── -->
+<div id="about-wrapper">
+    <div id="about-contents-wrapper">
+        {{ content }}
+
+        {%- comment -%}
+          Pull every row from the configured metadata CSV that has a non-blank
+          image_citation value, then sort alphabetically by that field so the
+          list reads like a conventional image credits page.
+        {%- endcomment -%}
+        {%- assign all_items = site.data[site.metadata] -%}
+        {%- assign cited_items = all_items | where_exp: "item", "item.image_citation and item.image_citation != ''" | sort: "image_citation" -%}
+
+        {% if cited_items %}
+        <ul id="image-citation-list">
+            {% for item in cited_items %}
+            <li id="{{ item.objectid }}">
+
+                {%- comment -%} Thumbnail — links to the item page {%- endcomment -%}
+                <div class="img-cite-thumb-col">
+                    {% if item.image_thumb or item.image_small %}
+                    <a href="{{ site.baseurl }}/items/{{ item.objectid }}.html" aria-label="View {{ item.title }}">
+                        <img
+                            src="{{ item.image_thumb | default: item.image_small | relative_url }}"
+                            alt="{{ item.image_alt_text | default: item.title }}"
+                            class="img-cite-thumb"
+                            loading="lazy"
+                        >
+                    </a>
+                    {% endif %}
+                </div>
+
+                {%- comment -%} Citation text with italic/bold Markdown rendered {%- endcomment -%}
+                <span class="img-cite-text">{{ item.image_citation | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+
+                {%- comment -%} View Item link {%- endcomment -%}
+                <div class="img-cite-link-col">
+                    <a href="{{ site.baseurl }}/items/{{ item.objectid }}.html" class="img-cite-link">
+                        View Item
+                    </a>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    {% if page.credits == true %}
+    <div id="credits-contents-wrapper">
+        {% include cb/credits.html %}
+    </div>
+    {% endif %}
+</div>
+
+{% include essay/footer-scrollytelling.html %}

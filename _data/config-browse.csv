@@ -1,0 +1,8 @@
+field,display_name,btn,hidden,sort_name,facet_name
+date,Date,,,Date Created
+description,,,true,,Archival Description
+image_alt_text,,,true,,Alternate Text Description
+creator,Creator,,,
+subject,,true
+location,,true,,,Location
+identifier,,,true,Identifier

@@ -1,0 +1,1625 @@
+---
+layout: default
+---
+
+{% include essay/header-scrollytelling.html %}
+
+<link rel="stylesheet" href="{{ '/assets/css/scrolly.css' | relative_url }}">
+
+<style>
+/* ============================================================
+   SKIP LINK
+   ============================================================ */
+.skip-to-tiles {
+    position: absolute;
+    left: -9999px; top: auto; width: 1px; height: 1px;
+    overflow: hidden; z-index: 9999;
+    font-family: 'Times New Roman', Times, Georgia, serif; font-size: 0.85rem;
+}
+.skip-to-tiles:focus {
+    left: 1rem; top: 1rem; width: auto; height: auto; overflow: visible;
+    background: #0a0a0a; color: #fff;
+    padding: 0.4rem 0.8rem; outline: 2px solid #fff; outline-offset: 2px;
+}
+
+/* ============================================================
+   TOC SIDEBAR
+   ============================================================ */
+#interact-toc-sidebar.scrolly-toc-sidebar {
+    background-color: #ffffff;
+    scrollbar-color: rgba(0,0,0,0.15) transparent;
+}
+#interact-toc-sidebar.scrolly-toc-sidebar::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.15); }
+#interact-toc-sidebar .scrolly-toc-heading { color: #000; }
+#interact-toc-sidebar .scrolly-toc-link    { color: #353535; }
+#interact-toc-sidebar .scrolly-toc-link:hover { color: #1B1B1B; background-color: rgba(0,0,0,0.05); }
+#interact-toc-sidebar .scrolly-toc-link.toc-active { color: #000; font-weight: 600; }
+#interact-toc-sidebar .toc-chapter-entry > .scrolly-toc-link { color: #353535; }
+#interact-toc-sidebar .toc-chapter-entry > .scrolly-toc-link:hover { color: #1B1B1B; }
+#interact-toc-sidebar .toc-chapter-entry > .scrolly-toc-link.toc-active { color: #000; }
+#interact-toc-sidebar .toc-section-rule { background-color: rgba(0,0,0,0.22); }
+#interact-toc-sidebar .toc-section-rule:hover { background-color: rgba(0,0,0,0.55); }
+#interact-toc-sidebar .toc-section-rule.toc-section-active { background-color: rgba(0,0,0,0.48); }
+
+/* ============================================================
+   WRAPPER
+   ============================================================ */
+#interact-wrapper {
+    margin-left: 14%; padding-top: 140px; padding-bottom: 6rem;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    display: flex; flex-direction: column; align-items: center;
+}
+@media screen and (max-width: 992px) {
+    #interact-toc-sidebar { display: none !important; }
+    #interact-wrapper     { margin-left: 0 !important; }
+}
+@media screen and (max-width: 768px) { #interact-wrapper { padding-top: 110px; padding-bottom: 5rem; } }
+
+/* ============================================================
+   WALL SCENE
+   ============================================================ */
+.wall-scene { width: 100%; max-width: 1800px; padding: 0 1.5rem; box-sizing: border-box; }
+
+/* ============================================================
+   ROW 1 — Controls bar
+   ============================================================ */
+.controls-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.9rem; width: 100%;
+}
+.face-toggle-group { display: flex; align-items: center; gap: 0.7rem; flex-shrink: 0; }
+.face-toggle-label {
+    font-size: 0.88rem; letter-spacing: 0.13em; text-transform: uppercase;
+    color: #bbb; transition: color 0.2s; background: none; border: none;
+    padding: 0; cursor: pointer;
+    font-family: 'Times New Roman', Times, Georgia, serif; line-height: 1;
+}
+.face-toggle-label:hover  { color: #555; }
+.face-toggle-label.active { color: #0a0a0a; font-weight: bold; }
+.face-toggle-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    border: 1px solid #0a0a0a; background: #fff;
+    display: inline-block; transition: background 0.25s; flex-shrink: 0;
+}
+.face-toggle-dot.filled { background: #0a0a0a; }
+.face-divider-glyph { font-size: 0.5rem; color: #c0b8ae; }
+.face-f-hint {
+    font-size: 0.75rem; color: #aaa; font-style: italic;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    white-space: nowrap; margin-left: 0.35rem;
+}
+.face-f-hint kbd {
+    font-style: normal; font-family: 'Courier New', monospace;
+    font-size: 0.72rem; background: rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.18); border-radius: 2px;
+    padding: 0.05rem 0.32rem; color: #555;
+}
+@media screen and (max-width: 480px) { .face-f-hint { display: none; } }
+
+/* Sort group */
+.sort-group { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap; justify-content: flex-end; }
+.sort-group-prefix {
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #999; font-family: 'Times New Roman', Times, Georgia, serif;
+    font-style: italic; white-space: nowrap;
+}
+.sort-divider { font-size: 0.55rem; color: #c0b8ae; flex-shrink: 0; }
+.sort-btn {
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #bbb; background: none; border: none; padding: 0; cursor: pointer;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    line-height: 1; transition: color 0.2s; white-space: nowrap;
+}
+.sort-btn:hover  { color: #555; }
+.sort-btn.active { color: #0a0a0a; font-weight: bold; }
+@media screen and (max-width: 900px) {
+    .controls-bar { flex-direction: column; align-items: flex-start; }
+    .sort-group   { justify-content: flex-start; }
+}
+@media screen and (max-width: 480px) { .sort-group { display: none; } }
+
+/* ============================================================
+   ROW 2 — Question bar
+   Three-column grid: [text 1fr] [drop-zone auto] [buttons 1fr]
+   ============================================================ */
+.question-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 1.5rem;
+    width: 100%;
+    min-height: 185px;
+    margin-bottom: 1.25rem;
+    box-sizing: border-box;
+}
+.question-text-area { /* first column */ }
+.q-label {
+    display: block; font-size: 0.57rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #999; margin: 0 0 0.45rem; line-height: 1;
+}
+.q-text {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 1.05rem; line-height: 1.5; color: #0a0a0a; margin: 0; font-weight: bold;
+}
+/* response: hidden by default via display:none; shown with display:block by JS */
+.q-response {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 0.85rem; line-height: 1.72; color: #333; margin: 0.55rem 0 0; display: none;
+}
+
+/* Centre: drop zone */
+.drop-zone {
+    width: 185px; height: 185px;
+    border: 1px dashed #aaa; background: #fafafa;
+    box-sizing: border-box; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, background 0.2s; overflow: hidden;
+}
+.drop-zone.drag-over { border-color: #0a0a0a; border-style: solid; background: rgba(0,0,0,0.03); }
+.dz-hint {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 0.7rem; color: #bbb; text-align: center;
+    line-height: 1.5; font-style: italic; pointer-events: none; user-select: none;
+}
+.dz-card {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    overflow: hidden; background: #fff; border: 1px solid #0a0a0a;
+}
+.dz-card-img {
+    flex: 1; width: 100%; display: flex; align-items: center; justify-content: center;
+    overflow: hidden; padding: 4px 4px 0; box-sizing: border-box; min-height: 0;
+}
+.dz-card-img img {
+    max-width: 88%; max-height: 88%; object-fit: contain; display: block;
+    filter: grayscale(100%) contrast(1.1);
+}
+.dz-card-title {
+    flex-shrink: 0; width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1); padding: 4px 5px 5px;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 0.68em; line-height: 1.2;
+    color: #0a0a0a; text-align: center; font-weight: bold; box-sizing: border-box;
+}
+.dz-tint {
+    position: absolute; inset: 0; z-index: 2;
+    opacity: 0; transition: opacity 0.2s; pointer-events: none;
+}
+.dz-tint.correct { background: rgba(0,150,80,0.5);  opacity: 1; }
+.dz-tint.wrong   { background: rgba(200,30,30,0.5); opacity: 1; }
+@keyframes dzWrongFlash {
+    0%   { opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+.dz-tint.wrong-anim { background: rgba(200,30,30,0.5); animation: dzWrongFlash 0.85s ease forwards; }
+
+/* Right: action buttons */
+.question-actions {
+    justify-self: start;
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 0.55rem; min-width: 130px;
+}
+.q-action-btn {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #0a0a0a; background: none; border: 1px solid #0a0a0a;
+    padding: 0.38rem 0.8rem; cursor: pointer;
+    white-space: nowrap; text-align: center; width: 100%;
+    transition: background 0.15s, color 0.15s;
+}
+.q-action-btn:hover, .q-action-btn:focus-visible { background: #0a0a0a; color: #fff; outline: none; }
+.q-action-btn:disabled { color: #bbb; border-color: #ccc; cursor: default; background: none; }
+.q-action-btn:disabled:hover { background: none; color: #bbb; }
+
+@media screen and (max-width: 768px) {
+    .question-bar {
+        grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;
+        min-height: auto; row-gap: 1rem;
+    }
+    .question-text-area { grid-column: 1 / -1; }
+    .drop-zone  { grid-column: 1; justify-self: center; width: 130px; height: 130px; }
+    .question-actions { grid-column: 2; justify-self: start; align-self: center; }
+}
+@media screen and (max-width: 480px) { .drop-zone { width: 110px; height: 110px; } }
+
+/* ============================================================
+   WALL
+   ============================================================ */
+.orb-zone { position: relative; display: block; width: 100%; box-sizing: border-box; }
+.wall-perspective { perspective: 2200px; perspective-origin: 50% 35%; width: 100%; }
+.wall-card { transform-origin: center center; will-change: transform; width: 100%; }
+.wall-face {
+    background: #ffffff; border: 1px solid #0a0a0a;
+    box-shadow: 4px 4px 0 #666, 8px 8px 0 #aaa, 11px 11px 16px rgba(0,0,0,0.13);
+    padding: 2px; width: 100%; box-sizing: border-box;
+}
+
+/* ============================================================
+   TILES GRID
+   ============================================================ */
+.tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+    gap: 2px; width: 100%; box-sizing: border-box;
+}
+@media screen and (min-width: 1400px) { .tiles-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } }
+@media screen and (min-width: 1800px) { .tiles-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); } }
+@media screen and (max-width: 480px)  { .tiles-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); } }
+
+/* ============================================================
+   INDIVIDUAL CARD
+   ============================================================ */
+.tile {
+    aspect-ratio: 1 / 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    background: #ffffff; border: 1px solid #0a0a0a;
+    cursor: grab; box-sizing: border-box; padding: 7px 5px 5px;
+    overflow: hidden; position: relative;
+    appearance: none; -webkit-appearance: none;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    text-align: center; outline: none;
+    user-select: none;
+    /* touch-action: none removed — we handle touch selectively to allow scrolling */
+}
+.tile:active { cursor: grabbing; }
+.tile:hover, .tile:focus, .tile:focus-visible {
+    background: rgba(255,255,255,0.85); box-shadow: inset 0 0 0 2px #0a0a0a; z-index: 4;
+}
+
+/* Long-press visual feedback on touch */
+.tile.long-pressing {
+    box-shadow: inset 0 0 0 2px #0a0a0a;
+    background: rgba(0,0,0,0.04);
+}
+
+@keyframes longPressRing {
+    from { box-shadow: inset 0 0 0 0px rgba(10,10,10,0.3); }
+    to   { box-shadow: inset 0 0 0 4px rgba(10,10,10,0.5); }
+}
+.tile.long-pressing {
+    animation: longPressRing 0.6s ease forwards;
+}
+
+.tile-img-wrap {
+    flex: 1; width: 100%; display: flex; align-items: center; justify-content: center;
+    min-height: 0; overflow: hidden; padding: 4px 4px 0; box-sizing: border-box;
+}
+.tile img {
+    max-width: 88%; max-height: 88%; object-fit: contain;
+    display: block; filter: grayscale(100%) contrast(1.1); pointer-events: none;
+}
+
+/*
+ * Caption: title always visible.
+ * Metric line is always in the DOM and always takes up space (via min-height),
+ * but is invisible until show-captions is set — keeps card height consistent.
+ */
+.tile-caption {
+    flex-shrink: 0; width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    margin-top: 4px; padding-top: 4px;
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 0.72em; line-height: 1.25; color: #0a0a0a; text-align: center;
+}
+.tile-caption strong { display: block; font-weight: bold; }
+.tile-caption .tile-metric {
+    display: block;
+    visibility: hidden;
+    color: #666; margin-top: 2px; font-size: 0.9em;
+    min-height: 1.2em;
+}
+.tiles-grid.show-captions .tile-caption .tile-metric { visibility: visible; }
+
+/* ============================================================
+   DRAG GHOST
+   ============================================================ */
+.drag-ghost {
+    position: fixed; z-index: 5000; pointer-events: none; opacity: 0.88;
+    box-shadow: 4px 4px 14px rgba(0,0,0,0.32);
+    transform: scale(1.06); transform-origin: top left;
+    background: #fff; border: 1px solid #0a0a0a; overflow: hidden;
+}
+
+/* ============================================================
+   INTRO MODAL
+   ============================================================ */
+#intro-modal {
+    position: fixed; inset: 0; background: rgba(10,10,10,0.86);
+    z-index: 2000; display: flex; align-items: flex-start; justify-content: center;
+    padding: 3.5rem 2rem 2rem; overflow-y: auto;
+    backdrop-filter: blur(2px); -webkit-overflow-scrolling: touch;
+}
+#intro-modal.hidden { display: none; }
+.modal-inner {
+    position: relative; max-width: 560px; width: 100%;
+    padding: 2.75rem; border: 1px solid rgba(255,255,255,0.22);
+    color: #f8f5ee; margin-bottom: 2rem;
+}
+.modal-inner::before {
+    content: ''; position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    border: 1px solid rgba(255,255,255,0.08); pointer-events: none;
+}
+.modal-close {
+    position: absolute; top: 0.9rem; right: 0.9rem;
+    background: none; border: 1px solid rgba(255,255,255,0.28);
+    color: #f8f5ee; font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem; width: 1.75rem; height: 1.75rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+}
+.modal-close:hover, .modal-close:focus-visible {
+    background: rgba(255,255,255,0.14); outline: 1px solid #f8f5ee; outline-offset: 2px;
+}
+.modal-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(248,245,238,0.42); margin-bottom: 0.85rem;
+}
+.modal-inner h2 {
+    font-size: 1.35rem; font-weight: bold; line-height: 1.3;
+    margin-bottom: 1.2rem; padding-bottom: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.16);
+}
+.modal-inner p {
+    font-size: 0.87rem; line-height: 1.76;
+    color: rgba(248,245,238,0.76); margin-bottom: 0.85rem;
+}
+.ctrl-list {
+    margin: 1.2rem 0 0; padding: 0.9rem 1rem;
+    border: 1px solid rgba(255,255,255,0.11); background: rgba(255,255,255,0.04);
+}
+.ctrl-list-heading {
+    font-size: 0.57rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(248,245,238,0.38); margin-bottom: 0.6rem; display: block;
+}
+.ctrl-row { display: flex; gap: 0.6rem; align-items: flex-start; margin-bottom: 0.42rem; }
+.ctrl-key {
+    flex-shrink: 0; background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 2px;
+    padding: 0.07rem 0.38rem; font-family: 'Courier New', monospace;
+    font-size: 0.66rem; color: rgba(248,245,238,0.8); min-width: 2rem; text-align: center;
+}
+.ctrl-desc { font-size: 0.71rem; color: rgba(248,245,238,0.52); line-height: 1.45; }
+.modal-begin {
+    display: block; width: 100%; margin-top: 1.75rem; padding: 0.65rem;
+    background: none; border: 1px solid rgba(248,245,238,0.42);
+    color: #f8f5ee; font-family: 'Times New Roman', Times, serif;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.18s, color 0.18s;
+}
+.modal-begin:hover, .modal-begin:focus-visible { background: #f8f5ee; color: #0a0a0a; outline: none; }
+.modal-tap-hint {
+    display: none; text-align: center; font-size: 0.68rem;
+    color: rgba(248,245,238,0.35); margin-top: 0.6rem;
+    font-style: italic; font-family: 'Times New Roman', Times, Georgia, serif;
+}
+@media screen and (max-width: 768px) { .modal-tap-hint { display: block; } }
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+#lightbox {
+    position: fixed; inset: 0; background: rgba(10,10,10,0.76);
+    z-index: 1500; display: flex; align-items: center; justify-content: center;
+    padding: 2rem; backdrop-filter: blur(1px);
+}
+#lightbox.hidden { display: none; }
+.lb-inner {
+    position: relative; background: #ffffff; border: 1px solid #0a0a0a;
+    max-width: 1012px; width: 100%; max-height: 90vh; overflow-y: auto;
+    display: grid; grid-template-columns: 1fr 1.25fr;
+    box-shadow: 5px 5px 0 #444, 10px 10px 22px rgba(0,0,0,0.38);
+}
+@media screen and (max-width: 660px) { .lb-inner { grid-template-columns: 1fr; } }
+.lb-close {
+    position: sticky; top: 0.7rem; right: 0.7rem; float: right;
+    background: none; border: 1px solid #0a0a0a;
+    font-family: 'Times New Roman', Times, serif; font-size: 0.9rem;
+    width: 1.75rem; height: 1.75rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0.7rem 0.7rem 0 auto;
+    transition: background 0.15s, color 0.15s; z-index: 10;
+}
+.lb-close:hover, .lb-close:focus-visible { background: #0a0a0a; color: #fff; outline: none; }
+.lb-image-col {
+    border-right: 1px solid #0a0a0a; padding: 1.25rem 1rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: #ffffff; min-height: 300px;
+}
+.lb-image-col img {
+    max-width: 96%; max-height: 440px; object-fit: contain;
+    filter: grayscale(100%) contrast(1.1); display: block;
+}
+.lb-no-image { flex: 1; min-height: 120px; }
+.lb-text-col { padding: 1.75rem; display: flex; flex-direction: column; }
+.lb-eyebrow { font-size: 0.58rem; letter-spacing: 0.17em; text-transform: uppercase; color: #999; margin-bottom: 0.6rem; }
+.lb-text-col h3 {
+    font-size: 1.1rem; font-weight: bold; line-height: 1.3;
+    margin-bottom: 0.9rem; padding-bottom: 0.7rem;
+    border-bottom: 1px solid #0a0a0a; color: #0a0a0a;
+}
+.lb-stats-list { list-style: disc; padding-left: 1.1rem; margin: 0 0 0.9rem; }
+.lb-stats-list li {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 0.88rem; line-height: 1.82; color: #111;
+}
+.lb-stats-list li .lb-na { color: #aaa; font-style: italic; }
+.lb-body p {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 0.9rem; line-height: 1.82; color: #111; margin-bottom: 0.9rem;
+}
+.lb-examples { margin-top: auto; padding-top: 0.9rem; border-top: 1px solid #e8e4dc; }
+.lb-examples-label {
+    font-size: 0.57rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #999; margin-bottom: 0.35rem; display: block;
+}
+.lb-examples-text { font-size: 0.75rem; color: #777; line-height: 1.65; font-style: italic; }
+</style>
+
+<a class="skip-to-tiles" href="#first-tile">Skip to visualization</a>
+
+<!-- ============================================================
+     INTRO MODAL
+     ============================================================ -->
+<div id="intro-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-inner">
+    <button class="modal-close" id="modal-close-btn" aria-label="Close introduction">×</button>
+    <p class="modal-eyebrow">1906 Miller-Dervant Catalog Visualization</p>
+    <h2 id="modal-title">Imitative Identities</h2>
+    <p>This visualization highlights the materials from the 1906 catalog of Spokane’s leading costume company.</p>
+    <p>The wall has two faces. The front organizes costumes by <strong>type</strong>; the reverse by <strong>national or ethnic costumes</strong>. Each card represents a category. Drag or select a card to answer. Responses flash <strong>red</strong> for incorrect answers and <strong>green</strong> for correct.</p>
+    <p>Select <strong>Costume Type</strong> or <strong>National or Ethnic Costumes</strong> at the top of the wall, or press <strong>F</strong> to flip between views. <strong>Sort categories</strong> or select <strong>Reveal Answer</strong> button to present the findings.</p>
+    <p><strong>Source:</strong> <i>Miller-Dervant Catalog</i>, 1906, Miller-Dervant Company Records, 1896–1955, MsSC 198, Eastern Washington State Historical Society, Northwest Museum of Arts and Culture, Spokane, WA. Population data from the <i>1910 Abstract of the Thirteenth Census, Supplement for Washington State</i>.</p>
+    <div class="ctrl-list">
+      <span class="ctrl-list-heading">Controls</span>
+      <div class="ctrl-row">
+        <span class="ctrl-key">D / Drag</span>
+        <span class="ctrl-desc">When a card is selected, press D or drag the card to submit it as your answer</span>
+      </div>
+      <div class="ctrl-row">
+        <span class="ctrl-key">Long press</span>
+        <span class="ctrl-desc">On touch screens, hold a card to submit it as your answer (short tap opens card detail)</span>
+      </div>
+      <div class="ctrl-row">
+        <span class="ctrl-key">Tab</span>
+        <span class="ctrl-desc">Move keyboard focus between cards</span>
+      </div>
+      <div class="ctrl-row">
+        <span class="ctrl-key">Enter</span>
+        <span class="ctrl-desc">Open the focused card's detail view</span>
+      </div>
+      <div class="ctrl-row">
+        <span class="ctrl-key">Esc</span>
+        <span class="ctrl-desc">Close detail view or this introduction</span>
+      </div>
+      <div class="ctrl-row">
+        <span class="ctrl-key">F</span>
+        <span class="ctrl-desc">Flip the wall to the other face</span>
+      </div>
+    </div>
+    <button class="modal-begin" id="modal-begin-btn">Enter the Catalog</button>
+    <p class="modal-tap-hint">Tap outside this card or press Esc to dismiss</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     LIGHTBOX
+     ============================================================ -->
+<div id="lightbox" class="hidden" role="dialog" aria-modal="true" aria-labelledby="lb-title">
+  <div class="lb-inner">
+    <div class="lb-image-col" id="lb-image-col"></div>
+    <div class="lb-text-col">
+      <button class="lb-close" id="lb-close-btn" aria-label="Close detail view">×</button>
+      <p class="lb-eyebrow" id="lb-eyebrow">Costume Category</p>
+      <h3 id="lb-title">—</h3>
+      <ul class="lb-stats-list" id="lb-stats-list"></ul>
+      <div class="lb-body" id="lb-body"></div>
+      <div class="lb-examples" id="lb-examples"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     TOC SIDEBAR
+     ============================================================ -->
+<aside class="scrolly-toc-sidebar" id="interact-toc-sidebar" aria-label="Table of contents">
+  <p class="scrolly-toc-heading">Contents</p>
+  <ul class="scrolly-toc-list">
+    <li><a href="{{ '/' | relative_url }}" class="scrolly-toc-link">Home</a></li>
+    {% assign toc_all = site.essay | sort: 'order' %}
+    {% for essay in toc_all %}
+      {% unless essay.layout == 'inter_vis' %}
+        {% assign prev_order = essay.order | minus: 1 %}
+        {% assign preceding  = toc_all | where: "order", prev_order | first %}
+        {% if preceding.layout == 'inter_vis' %}
+          {% assign nav_url = preceding.url %}
+        {% else %}
+          {% assign nav_url = essay.url %}
+        {% endif %}
+        <li class="toc-chapter-entry">
+          <a href="{{ nav_url | prepend: site.baseurl }}"
+            class="scrolly-toc-link"
+            data-toc-chapter="{{ essay.order }}">
+            {% if essay.chap_number %}{{ essay.chap_number }}. {% endif %}{{ essay.title }}
+          </a>
+        </li>
+      {% endunless %}
+    {% endfor %}
+
+    <hr class="toc-divider">
+
+    {% for nav in site.data.config-nav %}
+      {% unless nav.stub == "/" or nav.stub contains "/essay/" %}
+    <li>
+      <a href="{{ nav.stub | relative_url }}"
+        class="scrolly-toc-link {% if nav.stub == page.url %}toc-active{% endif %}">
+        {{ nav.display_name }}
+      </a>
+    </li>
+      {% endunless %}
+    {% endfor %}
+  </ul>
+</aside>
+
+<!-- ============================================================
+     MAIN WRAPPER
+     ============================================================ -->
+<div id="interact-wrapper">
+  <div class="wall-scene">
+
+    <!-- Row 1: Controls bar -->
+    <div class="controls-bar" aria-live="polite">
+      <div class="face-toggle-group">
+        <span class="face-toggle-dot filled" id="dot-front"></span>
+        <button class="face-toggle-label active" id="label-front"
+                aria-label="Show Costume Type face" aria-pressed="true">Costume Type</button>
+        <span class="face-divider-glyph">◆</span>
+        <button class="face-toggle-label" id="label-back"
+                aria-label="Show Ethnic Identity face" aria-pressed="false">National or Ethnic Costumes</button>
+        <span class="face-toggle-dot" id="dot-back"></span>
+        <span class="face-f-hint">or press <kbd>F</kbd></span>
+      </div>
+
+      <div class="sort-group" id="sort-group-front" aria-label="Sort costume types by">
+        <span class="sort-group-prefix">sort by:</span>
+        <button class="sort-btn active" data-field="alpha"  data-face="front">a–z</button>
+        <span class="sort-divider">|</span>
+        <button class="sort-btn" data-field="pct"    data-face="front">percent in catalog</button>
+        <span class="sort-divider">|</span>
+        <button class="sort-btn" data-field="women"  data-face="front">percent of women's costumes</button>
+        <span class="sort-divider">|</span>
+        <button class="sort-btn" data-field="men"    data-face="front">percent of men's costumes</button>
+        <span class="sort-divider">|</span>
+        <button class="sort-btn" data-field="cost"   data-face="front">average cost</button>
+      </div>
+
+      <div class="sort-group" id="sort-group-back" style="display:none;" aria-label="Sort ethnic identities by">
+        <span class="sort-group-prefix">sort by:</span>
+        <button class="sort-btn active" data-field="alpha"    data-face="back">a–z</button>
+        <span class="sort-divider">|</span>
+        <button class="sort-btn" data-field="pct"      data-face="back">percent in catalog</button>
+        <span class="sort-divider">|</span>
+        <button class="sort-btn" data-field="pct1910"  data-face="back">percent of 1910 state census</button>
+        <span class="sort-divider">|</span>
+        <button class="sort-btn" data-field="pct1900"  data-face="back">percent of 1900 state census</button>
+        <span class="sort-divider">|</span>
+        <button class="sort-btn" data-field="distance" data-face="back">distance from Spokane</button>
+      </div>
+    </div>
+
+    <!-- Row 2: Question bar -->
+    <div class="question-bar" id="question-bar">
+      <div class="question-text-area">
+        <span class="q-label" id="q-label">Question 1 of 4</span>
+        <p class="q-text" id="q-text">—</p>
+        <p class="q-response" id="q-response"></p>
+      </div>
+
+      <div class="drop-zone" id="drop-zone" role="region"
+           aria-label="Answer drop zone — drag a card here, or focus a card and press D">
+        <span class="dz-hint" id="dz-hint">drag a card<br>here</span>
+      </div>
+
+      <div class="question-actions">
+        <button class="q-action-btn" id="btn-skip-next">Skip Question</button>
+        <button class="q-action-btn" id="btn-reveal">Reveal Answer</button>
+      </div>
+    </div>
+
+    <!-- Row 3: Wall -->
+    <div class="orb-zone" id="orb-zone">
+      <div class="wall-perspective">
+        <div class="wall-card" id="wall-card">
+          <div class="wall-face">
+            <div class="tiles-grid" id="tiles-grid" role="list" aria-label="Costume categories"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% include essay/footer-scrollytelling.html %}
+
+<!-- ============================================================
+     DATA — Jekyll injects CSV rows as JSON
+     ============================================================ -->
+<script>
+var TYPE_DATA = [
+  {% for item in site.data.interact_type %}
+  {
+    filename:    {{ item.filename    | jsonify }},
+    title:       {{ item.title       | jsonify }},
+    count:       {{ item.count       | plus: 0 }},
+    percentage:  {{ item.percentage  | jsonify }},
+    pct:         {{ item.percentage  | remove: "%" | strip | plus: 0.0 }},
+    women:       {{ item.women       | jsonify }},
+    men:         {{ item.men         | jsonify }},
+    cost:        {{ item.cost        | jsonify }},
+    examples:    {{ item.examples    | jsonify }},
+    alt_text:    {{ item.alt_text    | jsonify }},
+    description: {{ item.description | jsonify }},
+    full:        {{ item.full        | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
+var ETHNIC_DATA = [
+  {% for item in site.data.interact_ethnic %}
+  {
+    filename:    {{ item.filename    | jsonify }},
+    title:       {{ item.title       | jsonify }},
+    count:       {{ item.count       | plus: 0 }},
+    percentage:  {{ item.percentage  | jsonify }},
+    pct:         {{ item.percentage  | remove: "%" | strip | plus: 0.0 }},
+    women:       {{ item.women       | jsonify }},
+    men:         {{ item.men         | jsonify }},
+    cost:        {{ item.cost        | jsonify }},
+    pct1910:     {{ item["1910_percent"] | jsonify }},
+    pct1900:     {{ item["1900_percent"] | jsonify }},
+    distance:    {{ item.distance    | jsonify }},
+    examples:    {{ item.examples    | jsonify }},
+    alt_text:    {{ item.alt_text    | jsonify }},
+    description: {{ item.description | jsonify }},
+    full:        {{ item.full        | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
+var IMG_BASE  = "{{ site.baseurl }}/objects/interact/";
+var IMG_SMALL = "{{ site.baseurl }}/objects/interact/small/";
+</script>
+
+<!-- ============================================================
+     QUESTION + RESPONSE DATA
+     ============================================================ -->
+<script>
+/*
+ * Maps a sort-field name to its corresponding question index (per face).
+ * Used so clicking a sort button reveals the matching question + response.
+ */
+var FIELD_TO_Q = {
+  front: { pct: 0, women: 1, men: 2, cost: 3 },
+  back:  { pct: 0, pct1910: 1, pct1900: 2, distance: 3 }
+};
+
+var TYPE_QUESTIONS_DEF = [
+  { text: 'Which type appeared most frequently in the catalog?',         field: 'pct'   },
+  { text: 'Which type had the highest percentage of women\'s costumes?', field: 'women' },
+  { text: 'Which type had the highest percentage of men\'s costumes?',   field: 'men'   },
+  { text: 'Which costume type had the highest average cost?',            field: 'cost'  }
+];
+
+var ETHNIC_QUESTIONS_DEF = [
+  { text: 'Which group appeared most frequently in the catalog?',                         field: 'pct'      },
+  { text: 'In 1910, which group had the highest population in Washington State?',         field: 'pct1910'  },
+  { text: 'In 1900, which group had the highest population in Washington State?',         field: 'pct1900'  },
+  { text: 'If associated with a nation, which group is the greatest distance from Spokane?', field: 'distance' }
+];
+
+/* Response messages — */
+var TYPE_RESPONSES = [
+  'This category includes costume types that are named directly after a nation or ethnicity, such as <i>Oriental Lady</i>, <i>Egyptian Dancing Girl</i>, or <i>Armenian Chief</i>. While Marie Antoinette is associated with France, she was a real historical figure and a queen, so she is grouped under <i>Royalty/Nobility</i>. The reverse side of this section explores all of the categories within this group.',
+  'In 1910, Spokane had just over 100,000 residents, including 46,889 women, about 122 men for every 100 women. The <i>Peasant/Commoner</i> costume category is largely made up of Central and Eastern European identities, such as <i>Bohemian</i> (roughly the present-day Czech Republic), <i>Normandy</i> (northern France), and <i>Hungary</i>. Its prominence in the catalog’s women’s costumes contrasts with archival records of local parades and fairs, where the most popular women’s costumes were in the <i>Royalty/Nobility</i> and <i>Classical/Antiquity</i> categories.',
+  'In 1910, Spokane’s leading industries were <i>lumber and timber products</i> (27% of total industry), <i>printing and publishing</i> (16%), and <i>bread and other bakery products</i> (6.5%). While farming and agriculture do not appear as leading industries in the 1910 census, timber companies marketed logged-over land north of Spokane to urban “hobby orchardists” across Washington State. This was a successful strategy for timber leaders to offload Spokane and Stevens County land between 1900 and 1920, though generally less successful for investors.',
+  'All costs are based on costumes listed under the <i>Special Rental or Made to Order</i> category, which included the lower-cost rental tiers in the Miller-Dervant catalog. Adjusted for inflation, $11.20 for a pirate costume would be about $410 in 2026. This price reflects both the importance of costumed events and the premium Spokane residents paid to present themselves as “authentically” as possible, whether expressing who they aspired to be or who they wished to distinguish themselves from.'
+];
+
+var ETHNIC_RESPONSES = [
+  'Historian Eric Lott has defined blackface imitation as “a form of expropriation, by which Black people were divested of their own cultural representation, through the business of staging or manufacturing race.” Author Marilyn Mehaffy attributes the prevalence of these characters in commercial imagery to broader national discourses in the post–Reconstruction era, which romanticized a more coherent, tranquil past “lost” to the "uncertainties and upheavals of urbanism, industrialism, and commercialism.” In addition to being the leading category of costumes, the back of the catalog also includes a make-up tutorial for using “prepared cork” grease paint to imitate Black Americans.',
+  'Because the German word for “German” is <i>deutsch</i> (pronounced “doych”), Americans often confused Germans with Dutch immigrants from The Netherlands, following a wave of immigration to America after the 1848 revolutions. A regional example of this mislabeling in Spokane was “Dutch Jake,” a Frankfurt native who made a fortune in the Bunker Hill mine. He later opened the Coeur d’Alene Hotel and Variety Theater in Spokane, described as “one of the largest gambling and drinking establishments in the Northwest.” This four-story venue included a wing called the <i>Dutch Mill</i>, featuring musical waiters along with a menu of traditional German drinking songs for patrons to request.',
+  'While the 1890 and 1900 censuses show higher percentages of non-European residents in Washington State, reflecting the effects of settler colonialism and the Chinese Exclusion Act on the 1910 count, it’s important to think critically about all historical census data. David J. Hacker notes that because Congress did not establish a permanent Census Bureau until 1902, every census before 1910 were largely improvised by politicians and informed by their world views. King and Magnuson describe this leading to a phenomenon of “population as vindication,” in which counts of foreign and domestic "white stock" were inflated to equate growth with economic stability, while factors such as migratory labor, remoteness of reservation lands, and fear of deportation led to severe undercounting of all other groups.',
+  'This distance reflects Spokane’s relative proximity to South Africa, as all African costumes in this category are associated with what was then referred to as the Zulu Kingdom. Spokane residents likely became familiar with the Zulu people through popular literature such as <i>King Solomon’s Mines</i> (1885), <i>Allan Quatermain</i> (1887), and <i>The Young Colonists</i> (1885). These adventure novels revolved around the Anglo-Zulu War, a conflict that  has its origins in the discovery of diamonds in South Africa’s Kimberly Mines, <a href="{{ site.baseurl }}/essay/02-introduction.html">which is also where this story begins</a>.'
+];
+</script>
+
+<!-- ============================================================
+     VISUALIZATION CONTROLLER
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ----------------------------------------------------------
+     CONSTANTS
+  ---------------------------------------------------------- */
+  var LONG_PRESS_MS   = 600;   /* ms before a touch hold becomes an answer submission */
+  var DRAG_THRESHOLD  = 10;    /* px of movement before a touch becomes a drag */
+
+  /* ----------------------------------------------------------
+     UTILITIES
+  ---------------------------------------------------------- */
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* Strip $, %, commas, whitespace then parseFloat */
+  function parseNum(val) {
+    if (val === null || val === undefined || val === '' || val === false) return null;
+    var n = parseFloat(String(val).replace(/[$,%\s]/g, ''));
+    return isNaN(n) ? null : n;
+  }
+
+  function fmtCatPct(num) {
+    var n = parseNum(num);
+    if (n === null) return null;
+    return (n % 1 === 0 ? n.toFixed(0) : String(n)) + '%';
+  }
+
+  function fmtPopPct(val) {
+    var n = parseNum(val);
+    if (n === null || n === 0) return null;
+    return n.toString().replace(/^0\./, '.') + '%';
+  }
+
+  function fmtDist(val) {
+    var n = parseNum(val);
+    if (n === null || n === 0) return null;
+    return Math.round(n).toLocaleString('en-US') + ' miles from Spokane';
+  }
+
+  function fmtCost(val) {
+    var n = parseNum(val);
+    return n !== null ? '$' + n.toFixed(2) : null;
+  }
+
+  function thumbSrc(fn) {
+    if (!fn || !fn.trim()) return '';
+    return IMG_SMALL + fn.trim().replace(/\.(png|gif|webp|jpeg)$/i, '.jpg');
+  }
+
+  /* ----------------------------------------------------------
+     LABEL FUNCTIONS
+  ---------------------------------------------------------- */
+  var TYPE_LABEL_FNS = [
+    function(i){ var v=parseNum(i.pct);   return v!==null ? fmtCatPct(v)+' of catalog' : 'n/a'; },
+    function(i){ var v=parseNum(i.women); return v!==null ? fmtCatPct(v)+' of costumes under women\'s sections' : 'n/a'; },
+    function(i){ var v=parseNum(i.men);   return v!==null ? fmtCatPct(v)+' of costumes under men\'s sections' : 'n/a'; },
+    function(i){ var v=fmtCost(i.cost);   return v ? v+': average cost' : 'n/a'; }
+  ];
+
+  var ETHNIC_LABEL_FNS = [
+    function(i){ var v=parseNum(i.pct);    return v!==null ? fmtCatPct(v)+' of catalog' : 'n/a'; },
+    function(i){ var v=fmtPopPct(i.pct1910); return v ? v+' of 1910 census' : 'n/a'; },
+    function(i){ var v=fmtPopPct(i.pct1900); return v ? v+' of 1900 census' : 'n/a'; },
+    function(i){ var v=fmtDist(i.distance);   return v ? v : 'n/a'; }
+  ];
+
+  /* Attach label functions to question definitions */
+  var TYPE_QUESTIONS = TYPE_QUESTIONS_DEF.map(function(q,i){
+    return { text: q.text, field: q.field, labelFn: TYPE_LABEL_FNS[i] };
+  });
+  var ETHNIC_QUESTIONS = ETHNIC_QUESTIONS_DEF.map(function(q,i){
+    return { text: q.text, field: q.field, labelFn: ETHNIC_LABEL_FNS[i] };
+  });
+
+  /* ----------------------------------------------------------
+     SORTING
+  ---------------------------------------------------------- */
+  function sortAlpha(a,b){ return a.title.localeCompare(b.title); }
+  function sortDescBy(field){
+    return function(a,b){
+      var va=parseNum(a[field]), vb=parseNum(b[field]);
+      if(va===null&&vb===null) return 0;
+      if(va===null) return  1;
+      if(vb===null) return -1;
+      return vb-va;
+    };
+  }
+  function sortData(data, field){
+    if(!field||field==='alpha') return data.slice().sort(sortAlpha);
+    return data.slice().sort(sortDescBy(field));
+  }
+  function getTop(data, field){
+    var best=null, bestVal=-Infinity;
+    data.forEach(function(item){
+      var v=parseNum(item[field]);
+      if(v!==null && v>bestVal){ bestVal=v; best=item; }
+    });
+    return best;
+  }
+
+  /* ----------------------------------------------------------
+     STATE
+  ---------------------------------------------------------- */
+  var currentFace = 'front';
+  var isFlipping  = false;
+
+  var currentTypeData   = sortData(TYPE_DATA,   'alpha');
+  var currentEthnicData = sortData(ETHNIC_DATA, 'alpha');
+  var activeSortField   = { front: 'alpha', back: 'alpha' };
+  var activeLabelFn     = null;
+
+  var qIdx      = 0;
+  var qAnswered = false;
+  var qFlipMode = false;
+
+  /*
+   * Drag / touch state object.
+   * For mouse: starts drag immediately on pointerdown.
+   * For touch: enters a "pending" phase to distinguish tap / drag / long-press.
+   */
+  var drag = {
+    active: false,        /* drag ghost is live */
+    item: null,
+    srcRect: null,
+    ghost: null,
+    offsetX: 0, offsetY: 0,
+    /* pending touch phase */
+    pending: false,
+    pendingItem: null,
+    pendingRect: null,
+    pendingTile: null,
+    pendingPointerId: null,
+    startX: 0, startY: 0,
+    longPressTimer: null
+  };
+
+  /* ----------------------------------------------------------
+     DOM REFS
+  ---------------------------------------------------------- */
+  var introModal  = document.getElementById('intro-modal');
+  var modalClose  = document.getElementById('modal-close-btn');
+  var modalBegin  = document.getElementById('modal-begin-btn');
+  var lightbox    = document.getElementById('lightbox');
+  var lbClose     = document.getElementById('lb-close-btn');
+  var lbImageCol  = document.getElementById('lb-image-col');
+  var lbEyebrow   = document.getElementById('lb-eyebrow');
+  var lbTitle     = document.getElementById('lb-title');
+  var lbStatsList = document.getElementById('lb-stats-list');
+  var lbBody      = document.getElementById('lb-body');
+  var lbExamples  = document.getElementById('lb-examples');
+  var wallCard    = document.getElementById('wall-card');
+  var tilesGrid   = document.getElementById('tiles-grid');
+  var labelFront  = document.getElementById('label-front');
+  var labelBack   = document.getElementById('label-back');
+  var dotFront    = document.getElementById('dot-front');
+  var dotBack     = document.getElementById('dot-back');
+  var dropZone    = document.getElementById('drop-zone');
+  var dzHint      = document.getElementById('dz-hint');
+  var qLabel      = document.getElementById('q-label');
+  var qText       = document.getElementById('q-text');
+  var qResponse   = document.getElementById('q-response');
+  var btnSkipNext = document.getElementById('btn-skip-next');
+  var btnReveal   = document.getElementById('btn-reveal');
+  var sgFront     = document.getElementById('sort-group-front');
+  var sgBack      = document.getElementById('sort-group-back');
+
+  /* ----------------------------------------------------------
+     ACCESSORS
+  ---------------------------------------------------------- */
+  function rawData()     { return currentFace==='front' ? TYPE_DATA         : ETHNIC_DATA;      }
+  function workingData() { return currentFace==='front' ? currentTypeData   : currentEthnicData; }
+  function questions()   { return currentFace==='front' ? TYPE_QUESTIONS    : ETHNIC_QUESTIONS;  }
+  function responses()   { return currentFace==='front' ? TYPE_RESPONSES    : ETHNIC_RESPONSES;  }
+  function curQ()        { return questions()[qIdx]; }
+
+  /* ----------------------------------------------------------
+     QUESTION BAR
+     FIX #1: was `style.display = ''` which inherits the CSS `display:none`.
+              Now explicitly `display:block` to show the element.
+  ---------------------------------------------------------- */
+  function updateQuestionBar() {
+    var qs = questions(), total = qs.length;
+
+    if (qFlipMode) {
+      qLabel.textContent       = 'End of cycle';
+      qText.textContent        = 'You have completed all ' + total + ' questions. Flip to the other face.';
+      qResponse.style.display  = 'none';
+      btnSkipNext.textContent  = 'Flip';
+      btnReveal.disabled       = true;
+      return;
+    }
+
+    qLabel.textContent = 'Question ' + (qIdx + 1) + ' of ' + total;
+    qText.textContent  = qs[qIdx].text;
+
+    if (qAnswered) {
+      /* FIX #1: must be 'block' not '' to override the CSS default of display:none */
+      qResponse.innerHTML     = responses()[qIdx];
+      qResponse.style.display = 'block';
+      btnSkipNext.textContent = (qIdx === total - 1) ? 'Flip' : 'Next Question';
+      btnReveal.disabled      = true;
+    } else {
+      qResponse.style.display = 'none';
+      btnSkipNext.textContent = 'Skip Question';
+      btnReveal.disabled      = false;
+    }
+  }
+
+  /* ----------------------------------------------------------
+     SORT SYNC
+  ---------------------------------------------------------- */
+  function syncSortButtons() {
+    var field = activeSortField[currentFace];
+    var group = currentFace==='front' ? sgFront : sgBack;
+    group.querySelectorAll('.sort-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.field === field);
+    });
+  }
+  function showSortGroups() {
+    sgFront.style.display = currentFace==='front' ? '' : 'none';
+    sgBack.style.display  = currentFace==='back'  ? '' : 'none';
+  }
+
+  /* ----------------------------------------------------------
+     SORT BUTTON CLICK HANDLER
+  ---------------------------------------------------------- */
+  document.querySelectorAll('.sort-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (btn.dataset.face !== currentFace) return;
+      var field = btn.dataset.field;
+
+      if (field === 'alpha') {
+        /* Reset to unanswered state */
+        activeSortField[currentFace] = 'alpha';
+        qAnswered     = false;
+        qFlipMode     = false;
+        activeLabelFn = null;
+        clearDropZone();
+
+        var sorted = sortData(rawData(), 'alpha');
+        if (currentFace==='front') currentTypeData   = sorted;
+        else                       currentEthnicData = sorted;
+
+        renderTiles(sorted);
+        syncSortButtons();
+        updateQuestionBar();
+      } else {
+        /* Reveal the question that matches this sort field */
+        var qMap      = FIELD_TO_Q[currentFace];
+        var targetIdx = qMap[field];
+        if (targetIdx === undefined) return;
+
+        activeSortField[currentFace] = field;
+        qIdx          = targetIdx;
+        qAnswered     = true;
+        qFlipMode     = false;
+        activeLabelFn = questions()[qIdx].labelFn;
+
+        /* Show correct card in drop zone */
+        var correct = getTop(rawData(), questions()[qIdx].field);
+        if (correct) showCorrectInDropZone(correct);
+
+        var sorted = sortData(rawData(), field);
+        if (currentFace==='front') currentTypeData   = sorted;
+        else                       currentEthnicData = sorted;
+
+        renderTiles(sorted);
+        syncSortButtons();
+        updateQuestionBar(); /* shows response text */
+      }
+    });
+  });
+
+  /* ----------------------------------------------------------
+     RENDER TILES
+  ---------------------------------------------------------- */
+  function renderTiles(data) {
+    var faceName = currentFace;
+    tilesGrid.innerHTML = '';
+    var frag = document.createDocumentFragment();
+
+    data.forEach(function(item, index) {
+      var btn = document.createElement('button');
+      btn.className = 'tile';
+      btn.setAttribute('role', 'listitem');
+      btn.dataset.itemTitle = item.title;
+
+      var metricLabel = activeLabelFn ? activeLabelFn(item) : '';
+      btn.setAttribute('aria-label', item.title + (metricLabel ? ' — ' + metricLabel : ''));
+      if (index === 0) btn.id = 'first-tile';
+
+      /* Image */
+      var imgWrap = document.createElement('div');
+      imgWrap.className = 'tile-img-wrap';
+      var src = thumbSrc(item.filename);
+      if (src) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = (item.alt_text && item.alt_text.trim()) ? item.alt_text.trim() : item.title;
+        img.loading = 'lazy';
+        imgWrap.appendChild(img);
+      }
+      btn.appendChild(imgWrap);
+
+      /*
+       * Caption: title always visible; metric always occupies space
+       * but is invisible until show-captions is applied.
+       */
+      var cap = document.createElement('div');
+      cap.className = 'tile-caption';
+      cap.setAttribute('aria-hidden', 'true');
+      cap.innerHTML =
+        '<strong>' + esc(item.title) + '</strong>' +
+        '<span class="tile-metric">' + esc(metricLabel || '\u00a0') + '</span>';
+      btn.appendChild(cap);
+
+      /*
+       * Keyboard:
+       *   Enter / Space → open lightbox
+       *   D             → submit as answer (same result as dragging to drop zone)
+       *
+       * FIX #2: D-key wrong answers now also open the lightbox (same as drag wrong).
+       */
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(item, faceName);
+          return;
+        }
+        if ((e.key === 'd' || e.key === 'D') &&
+            !qFlipMode &&
+            lightbox.classList.contains('hidden')) {
+          e.preventDefault();
+          handleAnswer(item, btn.getBoundingClientRect(), faceName);
+        }
+      });
+
+      /* Pointer down — branches for mouse vs touch */
+      btn.addEventListener('pointerdown', function(e) {
+        onPointerDown(e, item, faceName);
+      });
+
+      /* Click (mouse / tap that wasn't captured as a drag) → lightbox */
+      btn.addEventListener('click', function() {
+        /* Suppress click if a drag just ended on this tile */
+        if (drag._suppressNextClick) { drag._suppressNextClick = false; return; }
+        openLightbox(item, faceName);
+      });
+
+      frag.appendChild(btn);
+    });
+
+    tilesGrid.appendChild(frag);
+    tilesGrid.classList.toggle('show-captions', !!activeLabelFn);
+  }
+
+  /* ----------------------------------------------------------
+     ANSWER HANDLING — single entry point for drag, D key, and long press
+     FIX #2: wrong answer always opens lightbox (consistent across all input methods)
+  ---------------------------------------------------------- */
+  function handleAnswer(item, srcRect, faceName) {
+    if (qFlipMode) return;
+
+    var correct = getTop(rawData(), curQ().field);
+    if (!correct) return;
+
+    if (item.title === correct.title) {
+      /* ✓ CORRECT — show green, sort wall, display response text */
+      qAnswered     = true;
+      activeLabelFn = curQ().labelFn;
+      showCorrectInDropZone(item);
+
+      activeSortField[currentFace] = curQ().field;
+      var sorted = sortData(rawData(), curQ().field);
+      if (currentFace==='front') currentTypeData   = sorted;
+      else                       currentEthnicData = sorted;
+
+      renderTiles(sorted);
+      syncSortButtons();
+      updateQuestionBar(); /* ← shows response text */
+
+    } else {
+      /* ✗ WRONG — flash red in drop zone, then open the card's detail view */
+      showWrongInDropZone(item, srcRect);
+      /* Brief delay so the red flash is visible before lightbox appears */
+      var capturedFace = faceName || currentFace;
+      setTimeout(function() {
+        if (lightbox.classList.contains('hidden')) {
+          openLightbox(item, capturedFace);
+        }
+      }, 300);
+    }
+  }
+
+  /* ----------------------------------------------------------
+     REVEAL ANSWER BUTTON
+  ---------------------------------------------------------- */
+  btnReveal.addEventListener('click', function() {
+    if (qFlipMode) return;
+    var correct = getTop(rawData(), curQ().field);
+    if (!correct) return;
+
+    qAnswered     = true;
+    activeLabelFn = curQ().labelFn;
+    showCorrectInDropZone(correct);
+
+    activeSortField[currentFace] = curQ().field;
+    var sorted = sortData(rawData(), curQ().field);
+    if (currentFace==='front') currentTypeData   = sorted;
+    else                       currentEthnicData = sorted;
+
+    renderTiles(sorted);
+    syncSortButtons();
+    updateQuestionBar(); /* ← shows response text */
+  });
+
+  /* ----------------------------------------------------------
+     SKIP / NEXT / FLIP BUTTON
+  ---------------------------------------------------------- */
+  btnSkipNext.addEventListener('click', function() {
+    if (btnSkipNext.textContent.trim() === 'Flip') { flipWall(); return; }
+
+    if (qIdx < questions().length - 1) { qIdx++; } else { qFlipMode = true; }
+    qAnswered     = false;
+    activeLabelFn = null;
+
+    clearDropZone();
+    tilesGrid.classList.remove('show-captions');
+    qResponse.style.display = 'none';
+
+    activeSortField[currentFace] = 'alpha';
+    var sorted = sortData(rawData(), 'alpha');
+    if (currentFace==='front') currentTypeData   = sorted;
+    else                       currentEthnicData = sorted;
+
+    renderTiles(sorted);
+    syncSortButtons();
+    updateQuestionBar();
+  });
+
+  /* ----------------------------------------------------------
+     DROP ZONE HELPERS
+  ---------------------------------------------------------- */
+  function clearDropZone() {
+    var card = dropZone.querySelector('.dz-card');
+    if (card) card.remove();
+    dzHint.style.display = '';
+  }
+
+  function showCorrectInDropZone(item) {
+    clearDropZone();
+    dzHint.style.display = 'none';
+    dropZone.appendChild(buildDzCard(item, 'correct'));
+  }
+
+  function showWrongInDropZone(item, srcRect) {
+    clearDropZone();
+    dzHint.style.display = 'none';
+    var card = buildDzCard(item, null);
+    dropZone.appendChild(card);
+
+    var tint = card.querySelector('.dz-tint');
+    if (tint) tint.className = 'dz-tint wrong-anim';
+
+    var dzRect = dropZone.getBoundingClientRect();
+    setTimeout(function() {
+      clearDropZone();
+      if (srcRect) {
+        /* Fly-back ghost */
+        var fly = document.createElement('div');
+        fly.className = 'drag-ghost';
+        fly.style.cssText =
+          'width:' + dzRect.width + 'px;height:' + dzRect.height + 'px;' +
+          'left:' + dzRect.left + 'px;top:' + dzRect.top + 'px;opacity:0.7;' +
+          'background:rgba(200,30,30,0.18);border:1px solid #aaa;' +
+          'transition:left .45s ease-in-out,top .45s ease-in-out,' +
+          'width .45s,height .45s,opacity .45s ease-in-out;';
+        document.body.appendChild(fly);
+        void fly.offsetWidth;
+        fly.style.left = srcRect.left + 'px'; fly.style.top    = srcRect.top    + 'px';
+        fly.style.width= srcRect.width+ 'px'; fly.style.height = srcRect.height + 'px';
+        fly.style.opacity = '0';
+        setTimeout(function(){ if(fly.parentNode) fly.parentNode.removeChild(fly); }, 500);
+      }
+    }, 900);
+  }
+
+  function buildDzCard(item, tintType) {
+    var card = document.createElement('div');
+    card.className = 'dz-card';
+
+    var iw = document.createElement('div');
+    iw.className = 'dz-card-img';
+    var src = thumbSrc(item.filename);
+    if (src) {
+      var img = document.createElement('img');
+      img.src = src; img.alt = item.title;
+      iw.appendChild(img);
+    }
+    card.appendChild(iw);
+
+    var t = document.createElement('div');
+    t.className = 'dz-card-title'; t.textContent = item.title;
+    card.appendChild(t);
+
+    var tint = document.createElement('div');
+    tint.className = 'dz-tint' + (tintType ? ' ' + tintType : '');
+    card.appendChild(tint);
+
+    return card;
+  }
+
+/* ----------------------------------------------------------
+     REVISED POINTER / DRAG / LONG-PRESS
+     Unified logic to fix Desktop selection and gate Mobile hold-to-submit
+  ---------------------------------------------------------- */
+  drag._suppressNextClick = false;
+
+  function onPointerDown(e, item, faceName) {
+    if (qFlipMode) return;
+    if (!lightbox.classList.contains('hidden')) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+    var tile = e.currentTarget;
+    var rect = tile.getBoundingClientRect();
+
+    // Reset state
+    drag.active = false;
+    drag.pending = true; 
+    drag.pendingTile = tile;
+    drag.pendingItem = item;
+    drag.pendingRect = rect;
+    drag.pendingPointerId = e.pointerId;
+    drag.faceName = faceName || currentFace;
+    drag.startX = e.clientX;
+    drag.startY = e.clientY;
+    drag._suppressNextClick = false;
+
+    if (drag.longPressTimer) {
+      clearTimeout(drag.longPressTimer);
+      drag.longPressTimer = null;
+    }
+
+    // "Extended hold" submission ONLY if screen width is mobile (<= 768px)
+    var isMobileWidth = window.innerWidth <= 768; 
+    if ((e.pointerType === 'touch' || e.pointerType === 'pen') && isMobileWidth) {
+      tile.classList.add('long-pressing');
+      drag.longPressTimer = setTimeout(function() {
+        if (drag.pending) {
+          handleAnswer(item, rect, drag.faceName);
+          tile.classList.remove('long-pressing');
+          cancelPendingListeners(tile);
+          drag.pending = false;
+          drag._suppressNextClick = true; // Prevents lightbox opening after auto-submit
+        }
+      }, LONG_PRESS_MS);
+    }
+
+    // All devices (Mouse & Touch) wait for movement or release
+    tile.addEventListener('pointermove', onPendingMove);
+    tile.addEventListener('pointerup', onPendingUp);
+    tile.addEventListener('pointercancel', onPendingCancel);
+  }
+
+  function onPendingMove(e) {
+    var dx = e.clientX - drag.startX;
+    var dy = e.clientY - drag.startY;
+    
+    // Only start a drag/ghost if the user actually moves the pointer
+    if (Math.sqrt(dx * dx + dy * dy) > DRAG_THRESHOLD) {
+      if (drag.longPressTimer) {
+        clearTimeout(drag.longPressTimer);
+        drag.longPressTimer = null;
+      }
+      var tile = drag.pendingTile;
+      tile.classList.remove('long-pressing');
+      cancelPendingListeners(tile);
+      drag.pending = false;
+
+      e.preventDefault();
+      tile.setPointerCapture(drag.pendingPointerId);
+      
+      drag.active = true;
+      drag.item = drag.pendingItem;
+      drag.srcRect = drag.pendingRect;
+      drag.offsetX = drag.startX - drag.pendingRect.left;
+      drag.offsetY = drag.startY - drag.pendingRect.top;
+
+      startGhost(tile, drag.pendingRect, drag.startX, drag.startY);
+
+      tile.addEventListener('pointermove', onDragMove);
+      tile.addEventListener('pointerup', onDragUp);
+      tile.addEventListener('pointercancel', onDragCancel);
+    }
+  }
+
+  function onPendingUp(e) {
+    // Quick release (no movement, no long-press): Let native click event fire
+    if (drag.longPressTimer) {
+      clearTimeout(drag.longPressTimer);
+      drag.longPressTimer = null;
+    }
+    var tile = drag.pendingTile;
+    if (tile) tile.classList.remove('long-pressing');
+    cancelPendingListeners(tile);
+    drag.pending = false;
+  }
+
+  function onPendingCancel(e) {
+    if (drag.longPressTimer) {
+      clearTimeout(drag.longPressTimer);
+      drag.longPressTimer = null;
+    }
+    var tile = drag.pendingTile;
+    if (tile) tile.classList.remove('long-pressing');
+    cancelPendingListeners(tile);
+    drag.pending = false;
+  }
+
+  function cancelPendingListeners(tile) {
+    if (!tile) return;
+    tile.removeEventListener('pointermove', onPendingMove);
+    tile.removeEventListener('pointerup', onPendingUp);
+    tile.removeEventListener('pointercancel', onPendingCancel);
+  }
+
+  /* ── Active drag handlers (unchanged but included for completeness) ── */
+  function onDragMove(e) {
+    if (!drag.active || !drag.ghost) return;
+    drag.ghost.style.left = (e.clientX - drag.offsetX) + 'px';
+    drag.ghost.style.top  = (e.clientY - drag.offsetY) + 'px';
+    var dz = dropZone.getBoundingClientRect();
+    dropZone.classList.toggle('drag-over',
+      e.clientX >= dz.left && e.clientX <= dz.right &&
+      e.clientY >= dz.top  && e.clientY <= dz.bottom);
+  }
+
+  function onDragUp(e) {
+    if (!drag.active) return;
+    dropZone.classList.remove('drag-over');
+    var dz = dropZone.getBoundingClientRect();
+    var dropped =
+      e.clientX >= dz.left && e.clientX <= dz.right &&
+      e.clientY >= dz.top  && e.clientY <= dz.bottom;
+    var savedItem = drag.item, savedRect = drag.srcRect;
+    var savedFace = drag.faceName;
+    endDrag(e.currentTarget);
+    drag._suppressNextClick = true; 
+    if (dropped) handleAnswer(savedItem, savedRect, savedFace);
+  }
+
+  function onDragCancel(e) {
+    dropZone.classList.remove('drag-over');
+    endDrag(e.currentTarget);
+  }
+
+  function endDrag(tile) {
+    if (drag.ghost && drag.ghost.parentNode) drag.ghost.parentNode.removeChild(drag.ghost);
+    drag.ghost = null;
+    drag.active = false;
+    drag.item = null;
+    drag.srcRect = null;
+    if (tile) {
+      tile.removeEventListener('pointermove', onDragMove);
+      tile.removeEventListener('pointerup', onDragUp);
+      tile.removeEventListener('pointercancel', onDragCancel);
+    }
+  }
+
+  function startGhost(tile, rect, startX, startY) {
+    var ghost = document.createElement('div');
+    ghost.className = 'drag-ghost';
+    ghost.style.cssText =
+      'width:' + rect.width + 'px;height:' + rect.height + 'px;' +
+      'left:' + (startX - drag.offsetX) + 'px;' +
+      'top:'  + (startY - drag.offsetY) + 'px;';
+    var clone = tile.cloneNode(true);
+    clone.style.cssText = 'position:absolute;inset:0;border:none;box-shadow:none;pointer-events:none;';
+    ghost.appendChild(clone);
+    document.body.appendChild(ghost);
+    drag.ghost = ghost;
+  }
+
+  /* ----------------------------------------------------------
+     FLIP
+  ---------------------------------------------------------- */
+  function flipWall() {
+    if (isFlipping) return;
+    isFlipping = true;
+    var HALF = 310;
+
+    wallCard.style.transition = 'transform ' + HALF + 'ms ease-in';
+    wallCard.style.transform  = 'perspective(2200px) rotateY(90deg)';
+
+    setTimeout(function() {
+      currentFace = (currentFace === 'front') ? 'back' : 'front';
+      resetForFace();
+
+      wallCard.style.transition = 'none';
+      wallCard.style.transform  = 'perspective(2200px) rotateY(-90deg)';
+      void wallCard.offsetWidth;
+      wallCard.style.transition = 'transform ' + HALF + 'ms ease-out';
+      wallCard.style.transform  = 'perspective(2200px) rotateY(0deg)';
+
+      setTimeout(function() {
+        wallCard.style.transform  = '';
+        wallCard.style.transition = '';
+        isFlipping = false;
+      }, HALF);
+    }, HALF);
+  }
+
+  function resetForFace() {
+    qIdx = 0; qAnswered = false; qFlipMode = false; activeLabelFn = null;
+    clearDropZone();
+    tilesGrid.classList.remove('show-captions');
+    activeSortField[currentFace] = 'alpha';
+
+    var sorted = sortData(rawData(), 'alpha');
+    if (currentFace==='front') currentTypeData   = sorted;
+    else                       currentEthnicData = sorted;
+
+    renderTiles(sorted);
+    updateFaceLabels();
+    showSortGroups();
+    syncSortButtons();
+    updateQuestionBar();
+  }
+
+  function flipToFace(target) { if (currentFace !== target) flipWall(); }
+
+  function updateFaceLabels() {
+    var front = currentFace === 'front';
+    labelFront.className = 'face-toggle-label' + (front ? ' active' : '');
+    labelBack.className  = 'face-toggle-label' + (front ? '' : ' active');
+    dotFront.className   = 'face-toggle-dot'   + (front ? ' filled' : '');
+    dotBack.className    = 'face-toggle-dot'   + (front ? '' : ' filled');
+    labelFront.setAttribute('aria-pressed', front ? 'true' : 'false');
+    labelBack.setAttribute('aria-pressed',  front ? 'false' : 'true');
+  }
+
+  /* ----------------------------------------------------------
+     LIGHTBOX
+  ---------------------------------------------------------- */
+  function openLightbox(item, faceName) {
+    lbImageCol.innerHTML = '';
+    if (item.filename && item.filename.trim()) {
+      var img = document.createElement('img');
+      img.src = IMG_BASE + item.filename.trim();
+      img.alt = (item.alt_text && item.alt_text.trim()) ? item.alt_text.trim() : item.title;
+      lbImageCol.appendChild(img);
+    } else {
+      var blank = document.createElement('div'); blank.className = 'lb-no-image';
+      lbImageCol.appendChild(blank);
+    }
+
+    lbEyebrow.textContent = faceName === 'front' ? 'Costume Type' : 'National or Ethnic Costumes';
+    lbTitle.textContent   = item.title;
+
+    lbStatsList.innerHTML = '';
+    buildLbStats(item, faceName).forEach(function(entry) {
+      var li = document.createElement('li');
+      if (!entry || entry === 'n/a') {
+        var sp = document.createElement('span'); sp.className = 'lb-na'; sp.textContent = 'n/a';
+        li.appendChild(sp);
+      } else { li.textContent = entry; }
+      lbStatsList.appendChild(li);
+    });
+
+    var raw = (item.description || '').trim();
+    var paras = raw.split(/\n+/).filter(function(p){ return p.trim().length > 0; }).slice(0,3);
+    if (!paras.length && raw) paras = [raw];
+    lbBody.innerHTML = paras.map(function(p){ return '<p>'+esc(p.trim())+'</p>'; }).join('');
+
+    var exText = (item.full || '').trim();
+    lbExamples.innerHTML = exText
+      ? '<span class="lb-examples-label">Costumes in this category</span>' +
+        '<div class="lb-examples-text">' + esc(exText) + '</div>'
+      : '';
+
+    lightbox.classList.remove('hidden');
+    lightbox.removeAttribute('aria-hidden');
+    lbClose.focus();
+    document.addEventListener('keydown', lbKeyHandler);
+  }
+
+  function buildLbStats(item, faceName) {
+    if (faceName === 'front') {
+      var cp = parseNum(item.pct), w = parseNum(item.women), m = parseNum(item.men), c = fmtCost(item.cost);
+      return [
+        cp !== null ? fmtCatPct(cp) + ' of catalog'                             : 'n/a',
+        w  !== null ? fmtCatPct(w)  + ' of costumes under women\'s sections'    : 'n/a',
+        m  !== null ? fmtCatPct(m)  + ' of costumes under men\'s sections'      : 'n/a',
+        c           ? c             + ': average cost'                           : 'n/a'
+      ];
+    } else {
+      var ep = parseNum(item.pct), p10 = fmtPopPct(item.pct1910),
+          p00 = fmtPopPct(item.pct1900), dst = fmtDist(item.distance);
+      return [
+        ep  !== null ? fmtCatPct(ep) + ' of catalog' : 'n/a',
+        p10 ? p10 + ' of 1910 census'                : 'n/a',
+        p00 ? p00 + ' of 1900 census'                : 'n/a',
+        dst ? dst                                     : 'n/a'
+      ];
+    }
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden'); lightbox.setAttribute('aria-hidden', 'true');
+    document.removeEventListener('keydown', lbKeyHandler);
+  }
+  function lbKeyHandler(e) { if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); } }
+
+  /* ----------------------------------------------------------
+     MODAL
+  ---------------------------------------------------------- */
+  function closeModal() {
+    introModal.classList.add('hidden'); introModal.setAttribute('aria-hidden', 'true');
+  }
+  introModal.addEventListener('click', function(e){ if(e.target===introModal) closeModal(); });
+
+  /* ----------------------------------------------------------
+     GLOBAL KEYBOARD SHORTCUTS
+  ---------------------------------------------------------- */
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape' && !introModal.classList.contains('hidden')) closeModal();
+    if ((e.key === 'f' || e.key === 'F') &&
+        e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+      e.preventDefault(); flipWall();
+    }
+  });
+
+  /* ----------------------------------------------------------
+     TOC — remove from tab order
+  ---------------------------------------------------------- */
+  function removeTocFromTabOrder() {
+    var sb = document.getElementById('interact-toc-sidebar');
+    if (!sb) return;
+    sb.querySelectorAll('a,button,input,select,textarea,[tabindex]').forEach(function(el){
+      el.setAttribute('tabindex', '-1');
+    });
+    var h = sb.querySelector('.scrolly-toc-heading');
+    if (h) h.setAttribute('aria-hidden', 'true');
+  }
+
+  /* ----------------------------------------------------------
+     BINDINGS
+  ---------------------------------------------------------- */
+  labelFront.addEventListener('click', function(){ flipToFace('front'); });
+  labelBack.addEventListener('click',  function(){ flipToFace('back');  });
+  [labelFront, labelBack].forEach(function(el){
+    el.addEventListener('keydown', function(e){
+      if (e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); }
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modalBegin.addEventListener('click', closeModal);
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){ if(e.target===lightbox) closeLightbox(); });
+
+  /* ----------------------------------------------------------
+     INIT
+  ---------------------------------------------------------- */
+  function init() {
+    renderTiles(currentTypeData);
+    updateFaceLabels(); showSortGroups(); syncSortButtons(); updateQuestionBar();
+    removeTocFromTabOrder();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+}());
+</script>

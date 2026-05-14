@@ -1,0 +1,202 @@
+---
+# Sets page in container-fluid to fill window with min gutter
+layout: default
+---
+{% include essay/header-scrollytelling.html %}
+
+<link rel="stylesheet" href="{{ '/assets/css/scrolly.css' | relative_url }}">
+
+<style>
+  /* ── CSS variables: unconditionally light — no toggle on this page ── */
+  body {
+    --scrolly-bg-color:       #ffffff;
+    --scrolly-text-color:     #1B1B1B;
+    --scrolly-border-color:   transparent;
+    --scrolly-citation-color: #353535;
+  }
+
+  /* ── Suppress CB default layout padding ──────────────────────────── */
+  #maincontent,
+  #cb-page-content,
+  .container,
+  .container-fluid,
+  main {
+    padding:  0 !important;
+    margin:   0 !important;
+  }
+
+  /* ── Page wrapper: fills the viewport between fixed header and footer.
+     left: 14% clears the fixed TOC sidebar.                            */
+  #page-full-wrapper {
+    position:   fixed;
+    top:        var(--scrolly-header-h, 52px);
+    left:       14%;
+    right:      0;
+    bottom:     2.8rem;
+    margin:     0;
+    padding:    0;
+    overflow:   hidden;
+    background: #ffffff;
+  }
+
+  /* ── Scrollable inner container ───────────────────────────────────── */
+  #page-full-inner {
+    width:      100%;
+    height:     100%;
+    overflow:   hidden;
+    overflow-x: hidden;
+    padding:    0;
+    box-sizing: border-box;
+    max-width:  100%;
+    color:      #1C1C1D;
+  }
+
+  #page-full-inner p,
+  #page-full-inner li,
+  #page-full-inner h1,
+  #page-full-inner h2,
+  #page-full-inner h3,
+  #page-full-inner h4,
+  #page-full-inner h5,
+  #page-full-inner h6 {
+    color: #1C1C1D;
+  }
+
+  /* ── Links ────────────────────────────────────────────────────────── */
+  #page-full-inner a       { color: #2563eb; transition: color 0.15s ease; }
+  #page-full-inner a:hover { color: #1d4ed8; }
+
+  /* ── Timeline-specific: full height embed ────────────────────────── */
+  #page-full-inner:has(#timeline-embed) {
+    padding:  0;
+    overflow: hidden;
+  }
+
+  #page-full-inner:has(#timeline-embed) #timeline-embed {
+    width:      100% !important;
+    height:     100% !important;
+    min-height: calc(100vh - var(--scrolly-header-h, 52px) - 2.8rem);
+  }
+
+  /* ── Mobile ───────────────────────────────────────────────────────── */
+  @media (max-width: 992px) {
+    #page-full-wrapper { left: 0; }
+  }
+  @media (max-width: 768px) {
+    #page-full-inner:has(#timeline-embed) #timeline-embed {
+      min-height: calc(100vh - var(--scrolly-header-h, 52px) - 2.8rem);
+    }
+  }
+</style>
+
+<!-- ── TOC SIDEBAR ───────────────────────────────────────────────────────── -->
+<aside class="scrolly-toc-sidebar" id="bib-toc-sidebar" aria-label="Table of contents">
+  <p class="scrolly-toc-heading">Contents</p>
+  <ul class="scrolly-toc-list" id="scrolly-toc-list">
+
+    <li>
+      <a href="{{ '/' | relative_url }}" class="scrolly-toc-link">Home</a>
+    </li>
+
+    {% assign toc_essays = site.essay | sort: 'order' %}
+    {% for essay in toc_essays %}
+    <li class="toc-chapter-entry">
+      <a href="{{ essay.url | prepend: site.baseurl }}"
+         class="scrolly-toc-link"
+         data-toc-chapter="{{ essay.order }}">
+        {% if essay.order %}{{ essay.order }}. {% endif %}{{ essay.title }}
+      </a>
+    </li>
+    {% endfor %}
+
+    <hr class="toc-divider">
+
+    {% for nav in site.data.config-nav %}
+      {% unless nav.stub == "/" or nav.stub contains "/essay/" %}
+    <li>
+      <a href="{{ nav.stub | relative_url }}"
+         class="scrolly-toc-link {% if nav.stub == page.url %}toc-active{% endif %}">
+        {{ nav.display_name }}
+      </a>
+    </li>
+      {% endunless %}
+    {% endfor %}
+
+  </ul>
+</aside>
+
+<!-- ── CONTENT ───────────────────────────────────────────────────────────── -->
+<div id="page-full-wrapper">
+  <div id="page-full-inner">
+    {{ content }}
+  </div>
+</div>
+
+<script>
+/* ── Timeline keyboard navigation ────────────────────────────────────
+   ArrowLeft / ArrowRight move through timeline slides.
+   ArrowUp / ArrowDown is left to TimelineJS itself.                   */
+
+window.scrollyFooterOwnsKeyboard = false;
+
+(function () {
+  'use strict';
+
+  var NAV_SELECTORS = [
+    ['.tl-slidenav-previous', '.tl-slidenav-next'],
+    ['[class*="slidenav-prev"]', '[class*="slidenav-next"]'],
+    ['[aria-label*="previous" i]', '[aria-label*="next" i]'],
+    ['[aria-label*="prev" i]',     '[aria-label*="next" i]'],
+    ['.tl-button-prev', '.tl-button-next'],
+  ];
+
+  function findNavButtons() {
+    for (var i = 0; i < NAV_SELECTORS.length; i++) {
+      var prev = document.querySelector(NAV_SELECTORS[i][0]);
+      var next = document.querySelector(NAV_SELECTORS[i][1]);
+      if (prev || next) return { prev: prev, next: next };
+    }
+    return null;
+  }
+
+  function findNavInFrames() {
+    var frames = document.querySelectorAll('iframe');
+    for (var f = 0; f < frames.length; f++) {
+      try {
+        var doc = frames[f].contentDocument || frames[f].contentWindow.document;
+        for (var i = 0; i < NAV_SELECTORS.length; i++) {
+          var prev = doc.querySelector(NAV_SELECTORS[i][0]);
+          var next = doc.querySelector(NAV_SELECTORS[i][1]);
+          if (prev || next) return { prev: prev, next: next };
+        }
+      } catch (e) { /* cross-origin iframe — skip */ }
+    }
+    return null;
+  }
+
+  document.addEventListener('keydown', function (e) {
+    var tag = document.activeElement ? document.activeElement.tagName : '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (document.activeElement && document.activeElement.isContentEditable) return;
+
+    var key = e.key;
+
+    if (key === 'ArrowLeft' || key === 'Left' || key === 'ArrowRight' || key === 'Right') {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      var btns = findNavButtons() || findNavInFrames();
+      if (!btns) return;
+
+      if ((key === 'ArrowLeft' || key === 'Left') && btns.prev) {
+        btns.prev.click();
+      } else if ((key === 'ArrowRight' || key === 'Right') && btns.next) {
+        btns.next.click();
+      }
+    }
+  }, true);
+
+}());
+</script>
+
+{% include essay/footer-scrollytelling.html %}

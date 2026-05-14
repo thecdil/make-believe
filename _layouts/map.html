@@ -1,0 +1,65 @@
+---
+# Default leaflet map page
+layout: default
+custom-foot: js/map-js.html
+---
+{% include essay/header-scrollytelling.html %}
+
+<link rel="stylesheet" href="{{ '/assets/css/scrolly.css' | relative_url }}">
+
+<style>
+  body, html { overflow: hidden; }
+  #maincontent, #cb-page-content, .container, .container-fluid, main {
+    padding: 0 !important; margin: 0 !important; overflow: hidden;
+  }
+  #map-wrapper {
+    position: fixed;
+    top:    var(--scrolly-header-h, 52px);
+    left:   14%;
+    right:  0;
+    bottom: 2.8rem;
+    margin: 0; padding: 0;
+    overflow: hidden;
+    background: #e8e4da;
+  }
+  #map { width: 100%; height: 100%; margin: 0; padding: 0; }
+  @media (max-width: 992px) {
+    #bib-toc-sidebar { display: none !important; }
+    #map-wrapper { left: 0; top: var(--scrolly-header-h, 52px); }
+  }
+</style>
+
+<aside class="scrolly-toc-sidebar" id="bib-toc-sidebar" aria-label="Table of contents">
+  <p class="scrolly-toc-heading">Contents</p>
+  <ul class="scrolly-toc-list" id="scrolly-toc-list">
+    <li><a href="{{ '/' | relative_url }}" class="scrolly-toc-link">Home</a></li>
+
+    {% assign toc_all = site.essay | sort: 'order' %}
+    {% for essay in toc_all %}
+      {% unless essay.layout == 'inter_vis' %}
+        {% assign prev_order = essay.order | minus: 1 %}
+        {% assign preceding  = toc_all | where: "order", prev_order | first %}
+        {% if preceding.layout == 'inter_vis' %}{% assign nav_url = preceding.url %}{% else %}{% assign nav_url = essay.url %}{% endif %}
+        <li class="toc-chapter-entry">
+          <a href="{{ nav_url | prepend: site.baseurl }}" class="scrolly-toc-link" data-toc-chapter="{{ essay.order }}">
+            {% if essay.chap_number %}{{ essay.chap_number }}. {% endif %}{{ essay.title }}
+          </a>
+        </li>
+      {% endunless %}
+    {% endfor %}
+
+    <hr class="toc-divider">
+    {% for nav in site.data.config-nav %}
+      {% unless nav.stub == "/" or nav.stub contains "/essay/" %}
+      <li><a href="{{ nav.stub | relative_url }}" class="scrolly-toc-link {% if nav.stub == page.url %}toc-active{% endif %}">{{ nav.display_name }}</a></li>
+      {% endunless %}
+    {% endfor %}
+  </ul>
+</aside>
+
+<div id="map-wrapper">
+  <h2 class="visually-hidden">Map of Collection Items</h2>
+  <div id="map"></div>
+</div>
+
+{% include essay/footer-scrollytelling.html %}

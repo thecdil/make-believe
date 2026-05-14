@@ -1,0 +1,429 @@
+/*
+essay - style tweaks related to essay layout and essay features
+*/
+
+/* -------------------------------------------------------
+   SITE-WIDE TYPOGRAPHY
+   Times New Roman and double spacing applied globally.
+   font-family here is a fallback; primary is set via
+   base-font-family in theme.yml.
+   ------------------------------------------------------- */
+
+body,
+p,
+li,
+td,
+th,
+blockquote,
+figcaption {
+  font-family: "Times New Roman", Times, serif !important;
+  line-height: 2;
+}
+
+p { 
+  margin-bottom: 1.3em; 
+}
+
+/* -------------------------------------------------------
+   ESSAY PARAGRAPH FORMATTING
+   Scoped to scrolly essay layouts and essay-main container.
+   Replaces blank-line separation with traditional first-line
+   indent. No gap between consecutive paragraphs.
+   ------------------------------------------------------- */
+
+.scrolly-text-content p,
+.essay-main p {
+  margin-bottom: 0;
+  margin-top: 0;
+  text-indent: 1.5em;
+}
+
+/* No indent on first paragraph of a section, or after headings/images/blockquotes */
+.scrolly-text-content p:first-child,
+.scrolly-text-content h1 + p,
+.scrolly-text-content h2 + p,
+.scrolly-text-content h3 + p,
+.scrolly-text-content h4 + p,
+.scrolly-text-content h5 + p,
+.scrolly-text-content h6 + p,
+.scrolly-text-content blockquote + p,
+.scrolly-text-content figure + p,
+.scrolly-text-content img + p,
+.essay-main p:first-child,
+.essay-main h1 + p,
+.essay-main h2 + p,
+.essay-main h3 + p,
+.essay-main h4 + p,
+.essay-main h5 + p,
+.essay-main h6 + p,
+.essay-main blockquote + p,
+.essay-main figure + p,
+.essay-main img + p {
+  text-indent: 0;
+}
+
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.7em;
+  margin-bottom: 1.3rem;
+}
+
+/* -------------------------------------------------------
+   HORIZONTAL RULE SPACING
+   --- in markdown renders as <hr>. Adds generous vertical
+   buffer above and below to visually separate sections.
+   ------------------------------------------------------- */
+
+.scrolly-text-content hr,
+.essay-main hr {
+  margin-top: 3em;
+  margin-bottom: 3em;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Reset first-line indent on paragraph immediately following hr */
+.scrolly-text-content hr + p,
+.essay-main hr + p {
+  text-indent: 0;
+}
+
+
+/* Fading effects */
+/* Initially, steps are invisible */
+.step {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.visible-step {
+  opacity: 1 !important;
+}
+
+#step0 {
+  opacity: 1 !important;
+}
+
+.step.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.step.fade-out {
+  opacity: 0;
+  transition: opacity 0.75s ease-out;
+}
+
+/* To make sure the first step starts visible */
+#scrolly article .step:first-child {
+  opacity: 1;
+}
+
+.step {
+  margin-top: 20px;
+}
+
+/* Print styles for steps */
+@media print {
+  .step {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    break-inside: avoid;
+  }
+}
+
+.essay-main {
+  max-width: 633px;
+  width: 60%;
+  margin: 0 17.5% 0;
+  
+  @media (max-width: 768px) {
+    width: 90%;
+    margin: 0 2%;
+  }
+}
+
+/* Marginal Notes on Desktop */
+aside, .aside {
+  display: inline;
+  float: right;
+  position: relative;
+  width: 20vw;
+  margin-right: -26vw;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Marginal Notes on mobile */
+@media (max-width: 768px) {
+  aside, .aside {
+    display: block;
+    float: none;
+    margin: 5% 10%;
+    width: 80%;
+    font-size: 15px;
+    font-style: italic;
+  }
+}
+
+
+.text-justify { 
+  text-align: justify !important; 
+}
+
+video::cue {
+  font-family: "Libre Bodoni ", serif;
+  font-size: 1.04em;
+  line-height: 1.2;
+  padding: 0 0.5em;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.lg-video {
+  width: 800px !important;
+  height: auto;
+  
+  @media (max-width: 868px) {
+    width: 100% !important;
+  }
+}
+
+.btn-link {
+  color: rgb(12, 16, 93);
+}
+
+.mini {
+  font-size: .75em;
+}
+
+.blockquote-footer {
+  color: #383A42;
+}
+
+.bg-success {
+  background-color: #3d7b53 !important;
+}
+
+.title-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: visible;
+  
+  @media screen and (max-width: 768px) {
+    height: 67vh;
+  }
+}
+
+.title {
+  opacity: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-style: italic;
+  line-height: .8em;
+  font-size: 13em;
+  
+  @media screen and (max-width: 1200px) {
+    font-size: 10em;
+  }
+  
+  @media screen and (max-width: 768px) {
+    font-size: 5.5em;
+  }
+  
+  @media screen and (max-width: 528px) {
+    font-size: 4.5em;
+  }
+}
+
+.letter {
+  display: inline-block;
+  transform: translate(0, 0);
+  opacity: 0;
+  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.letter.animate {
+  opacity: 1;
+  transform: translate(0, 0) !important;
+}
+
+.gradient-fade-out {
+  height: 333px;
+  background-image: linear-gradient(to bottom, #3d7b53, white);
+  position: relative;
+  margin-top: -1px; /* To avoid any gap between sections */
+}
+
+.gradient-fade-in {
+  height: 133px;
+  background-image: linear-gradient(to bottom, white, #3d7b53);
+  position: relative;
+  margin-top: -1px; /* To avoid any gap between sections */
+}
+
+/* -------------------------------------------------------
+   TRIGGER MARKERS (INVISIBLE LOGIC)
+   -------------------------------------------------------
+   These styles ensure that liquid triggers (images/coords)
+   do not take up visual space or render lines/text, 
+   while remaining detectable by JavaScript.
+*/
+
+/* Remove the pseudo-element labels (e.g., "start", "end") */
+.trigger-marker::before,
+[data-trigger-type]::before {
+  content: none;
+  display: none;
+}
+
+/* EXCEPTION: Hydrated Images in FULL Layout Container with FULL Layout Block */
+.scrolly-container.layout-full .chapter-content-block[data-layout="full"] [data-trigger-type="image"] {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  width: 100% !important;
+  opacity: 1 !important;
+  margin: 8rem 0 !important;
+  padding-top: 2rem;
+}
+
+/* Images inside triggers should always be visible (handled by JS) */
+[data-trigger-type="image"] img {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+/* ------------------------------------------------------- */
+
+/* Citation styles */
+.scrolly-citation {
+  font-size: 0.9em;
+  color: var(--scrolly-citation-color);
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--scrolly-citation-border);
+}
+
+.scrolly-citation a {
+  color: var(--scrolly-link-color);
+}
+
+.scrolly-container.light-mode .scrolly-citation {
+  color: rgba(0, 0, 0, 0.7);
+  border-left-color: rgba(0, 0, 0, 0.2);
+}
+
+.scrolly-container.light-mode .scrolly-citation a {
+  color: var(--bs-link-color);
+}
+
+/* -------------------------------------------------------
+   CSS CUSTOM PROPERTIES
+   The :root block establishes the dark-mode defaults.
+   --scrolly-bg-color MUST be exactly #111111 — this value
+   is shared by the container, TOC sidebar, image column,
+   and citation panel. Any deviation (e.g. #101103) will
+   cause the citation sidebar to render a mismatched tint.
+   ------------------------------------------------------- */
+
+:root {
+  --scrolly-bg-color:        #111111;   /* exact match — do not alter */
+  --scrolly-text-color:      #E4E4E4;   /* mid scale */
+  --scrolly-border-color:    transparent;
+  --scrolly-citation-color:  #CACACA;   /* base scale */
+  --scrolly-citation-border: transparent;
+  --scrolly-link-color:      #6ea8fe;
+}
+
+/* Light-mode CSS variable overrides.
+   Scoped to body.light-mode so only the scrolly content panels
+   (text column, image panel, citation sidebar) are affected.
+   Header and footer are NOT targeted here — they remain dark always. */
+body.light-mode {
+  --scrolly-bg-color:        #ffffff;
+  --scrolly-text-color:      #1B1B1B;   /* inverse of #E4E4E4 */
+  --scrolly-border-color:    transparent;
+  --scrolly-citation-color:  #353535;   /* inverse of #CACACA */
+  --scrolly-citation-border: transparent;
+  --scrolly-link-color:      #0d6efd;
+}
+
+/* -------------------------------------------------------
+   INLINE CITATION SUPERSCRIPTS
+   Matches "View Item" link style from footer-scrollytelling.html:
+   var(--bs-link-color), underline, opacity 0.9 → 1 on hover.
+   ------------------------------------------------------- */
+
+sup a,
+a sup {
+  color: var(--bs-link-color) !important;
+  text-decoration: underline !important;
+  border-bottom: none !important;
+  opacity: 0.9;
+
+  &:hover,
+  &:focus {
+    color: var(--bs-link-color) !important;
+    text-decoration: underline !important;
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------------------------
+   SIDEBAR / MARGINAL CITATION TEXT
+   Typography mirrors the footer image-citation bar:
+   Times New Roman, 0.76em, colour from --scrolly-citation-color
+   so it flips automatically in light mode. Link colour
+   matches the footer "View Item" link via --bs-link-color.
+   The explicit background-color ensures the panel always
+   matches the container — guards against any inherited tint.
+   ------------------------------------------------------- */
+
+.scrolly-citation-display {
+  color: var(--scrolly-citation-color) !important;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 0.76em;
+  line-height: 1.8;
+  background-color: transparent;   /* defer to scrolly-citation-column / container */
+
+  .citation-number {
+    /* Dimmed ordinal — matches footer label opacity treatment */
+    color: var(--scrolly-citation-color) !important;
+    opacity: 0.6 !important;
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  a {
+    /* Exact same treatment as footer "View Item" link */
+    color: var(--bs-link-color) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px;
+    opacity: 0.9;
+
+    &:hover,
+    &:focus {
+      color: var(--bs-link-color) !important;
+      text-decoration: underline !important;
+      opacity: 1;
+    }
+  }
+}
+
+/* -------------------------------------------------------
+   CITATION COLUMN BACKGROUND
+   Explicit background-color on the sticky citation sidebar
+   prevents any inherited or :root color from bleeding through
+   as a mismatched tint (e.g. #101103 green cast).
+   ------------------------------------------------------- */
+
+.scrolly-citation-column {
+  background-color: var(--scrolly-bg-color);
+}
